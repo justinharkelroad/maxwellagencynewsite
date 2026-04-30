@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Maxwell Financial Group Premium Theme */
+    --background: 218 56% 10%; /* Deep Navy #0A1628 */
+    --foreground: 0 0% 100%; /* Pure White */
+
+    --card: 221 40% 18%; /* Rich Navy #1C2541 */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 100%; /* White for modals */
+    --popover-foreground: 220 26% 14%; /* Charcoal #2D3748 */
+
+    --primary: 45 71% 47%; /* Antique Gold #C9A227 */
+    --primary-foreground: 218 56% 10%; /* Deep Navy */
+
+    --secondary: 221 40% 18%; /* Rich Navy */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 221 40% 14%;
+    --muted-foreground: 220 10% 70%;
+
+    --accent: 45 71% 47%; /* Gold accent */
+    --accent-foreground: 218 56% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 221 30% 20%;
+    --input: 221 30% 20%;
+    --ring: 45 71% 47%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --ivory: 40 33% 96%; /* #F8F6F1 */
+    --charcoal: 220 26% 14%; /* #2D3748 */
+    
+    --hero-gradient: linear-gradient(180deg, hsl(218 56% 10%) 0%, hsl(221 40% 14%) 100%);
+    --card-shadow: 0 4px 12px -2px hsla(218, 56%, 5%, 0.4);
+    --card-shadow-hover: 0 12px 32px -4px hsla(218, 56%, 5%, 0.6);
+    --modal-shadow: 0 24px 48px -12px hsla(0, 0%, 0%, 0.3);
+
+    --sidebar-background: 218 56% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 45 71% 47%;
+    --sidebar-primary-foreground: 218 56% 10%;
+    --sidebar-accent: 221 40% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 221 30% 20%;
+    --sidebar-ring: 45 71% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+@layer components {
+  .hero-section {
+    background: var(--hero-gradient);
+  }
+
+  .section-light {
+    background: hsl(var(--ivory));
+  }
+
+  .card-elevated {
+    @apply bg-card rounded-lg border border-border;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-4px);
+    border-color: hsl(var(--primary) / 0.4);
+  }
+
+  .card-light {
+    @apply bg-white rounded-lg;
+    box-shadow: 0 2px 8px -2px hsla(220, 26%, 14%, 0.08);
+    border-top: 3px solid hsl(var(--primary));
+  }
+
+  .modal-container {
+    box-shadow: var(--modal-shadow);
+    border-top: 4px solid hsl(var(--primary));
+  }
+
+  .nav-link {
+    @apply text-foreground/80 hover:text-primary transition-colors duration-200;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .text-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .label-uppercase {
+    @apply uppercase tracking-wider text-xs font-semibold text-primary;
+    letter-spacing: 0.15em;
+  }
+
+  .btn-gold {
+    @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md;
+    @apply hover:bg-primary/90 transition-all duration-200;
+    @apply shadow-lg hover:shadow-xl hover:-translate-y-0.5;
+    letter-spacing: 0.025em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
