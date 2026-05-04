@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Car, Home as HomeIcon, Heart, Briefcase, Phone } from "lucide-react";
+import { Car, Home as HomeIcon, Heart, Briefcase } from "lucide-react";
 import Modal from "@/components/Modal";
 import QuoteForm from "@/components/QuoteForm";
 
@@ -86,24 +86,17 @@ const Hero = () => {
             })}
           </div>
 
-          {/* Dual CTAs */}
+          {/* Primary CTA */}
           <div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-md sm:max-w-xl mx-auto animate-fade-in opacity-0"
+            className="max-w-md sm:max-w-xl mx-auto animate-fade-in opacity-0"
             style={{ animationDelay: "0.55s" }}
           >
             <button
               onClick={() => openWithType("")}
-              className="btn-gold flex-1 text-base sm:text-lg py-3 sm:py-4"
+              className="btn-gold w-full text-base sm:text-lg py-3 sm:py-4"
             >
               Get a Quote Now
             </button>
-            <a
-              href="tel:2542943311"
-              className="flex-1 inline-flex items-center justify-center gap-2 text-base sm:text-lg font-semibold px-6 py-3 sm:py-4 rounded-md border-2 border-primary text-foreground hover:bg-primary/10 transition-all duration-200 hover:-translate-y-0.5"
-            >
-              <Phone className="w-5 h-5 text-primary" />
-              <span>Call Now</span>
-            </a>
           </div>
         </div>
       </div>
