@@ -25,17 +25,17 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero-section relative overflow-hidden min-h-[calc(100svh-5rem)] flex items-center">
-      {/* Background image */}
+    <section className="hero-section relative overflow-hidden min-h-[calc(100svh-5rem)] flex items-end sm:items-center">
+      {/* Background image with parallax */}
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat bg-[center_center] md:bg-[center_right]"
+        className="absolute inset-0 bg-cover bg-no-repeat bg-[center_bottom] sm:bg-[center_center]"
         style={{
-          backgroundImage: `url(${heroLionBg})`,
+          backgroundImage: `url(${heroBgUrl})`,
           backgroundAttachment: "fixed",
         }}
       />
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-background/60 md:bg-background/40" />
+      {/* Gradient overlay: heavier at top for text legibility, lighter at bottom to show building */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/65 to-background/30 sm:from-background/70 sm:via-background/45 sm:to-background/20" />
 
       <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 w-full py-10 sm:py-16">
         <div className="max-w-4xl mx-auto text-center">
