@@ -41,7 +41,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Headline */}
           <h1
-            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] mb-3 sm:mb-5 animate-fade-in opacity-0"
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] mb-3 sm:mb-5 animate-fade-in opacity-0 [text-shadow:0_2px_16px_hsl(var(--background)/0.9),0_1px_3px_hsl(var(--background))]"
             style={{ animationDelay: "0.1s" }}
           >
             Protecting What <br className="hidden sm:block" />
@@ -50,7 +50,7 @@ const Hero = () => {
 
           {/* Subheadline */}
           <p
-            className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in opacity-0"
+            className="text-base sm:text-lg lg:text-xl text-foreground/95 mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in opacity-0 [text-shadow:0_2px_12px_hsl(var(--background)/0.9),0_1px_2px_hsl(var(--background))]"
             style={{ animationDelay: "0.25s" }}
           >
             Fourth-generation Texas agency.
