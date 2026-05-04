@@ -71,11 +71,11 @@ const Hero = () => {
                   key={tile.type}
                   type="button"
                   onClick={() => openWithType(tile.type)}
-                  className="group relative flex flex-col items-center justify-center gap-2 sm:gap-3 rounded-xl border border-primary/40 bg-background/40 backdrop-blur-sm px-3 py-4 sm:py-6 hover:border-primary hover:bg-background/60 transition-all duration-200 hover:-translate-y-0.5"
+                  className="group relative flex flex-col items-center justify-center gap-2 sm:gap-3 rounded-xl border border-primary/50 bg-background/70 backdrop-blur-md px-3 py-4 sm:py-6 hover:border-primary hover:bg-background/80 transition-all duration-200 hover:-translate-y-0.5 shadow-[0_8px_24px_-4px_hsl(var(--background)/0.8)]"
                   aria-label={`Get a quote for ${tile.label} insurance`}
                 >
                   <Icon
-                    className="w-8 h-8 sm:w-10 sm:h-10 text-primary group-hover:scale-110 transition-transform duration-200"
+                    className="w-8 h-8 sm:w-10 sm:h-10 text-primary group-hover:scale-110 transition-transform duration-200 drop-shadow-[0_2px_6px_hsl(var(--background)/0.8)]"
                     strokeWidth={1.5}
                   />
                   <span className="font-serif text-base sm:text-lg text-foreground">
