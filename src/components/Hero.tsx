@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Car, Home as HomeIcon, Heart, Briefcase, Phone } from "lucide-react";
 import Modal from "@/components/Modal";
 import QuoteForm from "@/components/QuoteForm";
-import heroLionBg from "@/assets/hero-lion-bg.png";
+
+const heroBgUrl =
+  "https://lgykkvksbcjulwkbdbtk.supabase.co/storage/v1/object/public/herosection/Temple%20Office.jpg";
 
 type InsuranceType = "Auto" | "Home" | "Life" | "Business" | "";
 
