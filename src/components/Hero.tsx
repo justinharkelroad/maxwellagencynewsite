@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Car, Home as HomeIcon, Heart, Briefcase, Phone } from "lucide-react";
+import { Car, Home as HomeIcon, Heart, Briefcase } from "lucide-react";
 import Modal from "@/components/Modal";
 import QuoteForm from "@/components/QuoteForm";
 
