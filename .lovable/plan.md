@@ -1,22 +1,44 @@
+## Why it's slow
 
+The hero background (`Temple Office.jpg`) is served straight from the Supabase storage bucket as a full-size JPG:
 
-## Plan: Ensure Every Staff Profile Has a Google Review Button
+- **Unoptimized original.** It's the raw upload — likely several MB, full camera resolution, no WebP/AVIF, no compression pass.
+- **Loaded via CSS `background-image`.** Browsers can't discover CSS backgrounds until the stylesheet parses and the element matches, so it starts downloading late and gets no `fetchpriority` boost.
+- **No preload hint.** Nothing tells the browser "this is the LCP image, grab it first."
+- **`background-attachment: fixed`** forces repaints on scroll and on mobile is often promoted to a large composited layer, making the perceived load worse even after bytes arrive.
+- **No responsive sizing.** Mobile phones download the same huge desktop-resolution file.
 
-### Investigation
-After reviewing `src/components/StaffHero.tsx` and `src/pages/StaffPage.tsx`, every current staff member (all 17) is mapped in the `googleReviewUrls` object, so the "Leave a Google Review" button should already render on every profile. Since you're seeing one without it, there's likely a name mismatch (e.g. spelling, spacing, or capitalization difference between the staff `name` field and the key in `googleReviewUrls`) — the lookup is exact-match and case-sensitive.
+## Plan
 
-### Changes
+1. **Generate optimized variants of the hero image** and commit them to `public/hero/`:
+   - `temple-office-1920.webp` (desktop, ~1920w, quality ~75)
+   - `temple-office-1200.webp` (tablet)
+   - `temple-office-800.webp` (mobile)
+   - `temple-office-1920.jpg` fallback
+   Target: each well under 300 KB, mobile variant under 100 KB.
+   Source: pull the current file from the Supabase `herosection` bucket, re-encode with `sharp` via a one-off script.
 
-1. **Refactor `src/components/StaffHero.tsx` to guarantee universal coverage**
-   - Add a single fallback Google Review URL constant (the Corpus Christi review link, since it's the agency's main Google Business profile).
-   - Replace the per-name `googleReviewUrls` lookups with a helper that returns the mapped URL if present, otherwise the fallback. This way, even if a name ever gets mistyped or a new staff member is added without updating the map, the button still renders.
-   - Both render locations (the leadership left-column block and the non-leadership right-column block) will use this helper, so the button is guaranteed on every profile.
+2. **Swap the CSS background for a real `<img>` element** in `src/components/Hero.tsx`:
+   - `<picture>` with `<source type="image/webp" srcset=... sizes=...>` + `<img>` fallback
+   - `fetchpriority="high"`, `decoding="async"`, no `loading="lazy"` (this is LCP)
+   - Position it `absolute inset-0 w-full h-full object-cover` with the existing `object-position` mobile/desktop split done via Tailwind classes
+   - Keep the gradient overlay div on top
 
-2. **Audit the existing map**
-   - Cross-check each staff `name` in `StaffPage.tsx` against the keys in `googleReviewUrls` and fix any subtle mismatches found during implementation.
+3. **Add a preload hint** in `index.html` for the WebP so the browser starts fetching during HTML parse:
+   ```html
+   <link rel="preload" as="image" href="/hero/temple-office-1200.webp"
+         imagesrcset="/hero/temple-office-800.webp 800w, /hero/temple-office-1200.webp 1200w, /hero/temple-office-1920.webp 1920w"
+         imagesizes="100vw" fetchpriority="high" />
+   ```
 
-### Technical Details
-- The fallback constant will live alongside the existing `googleReviewUrls` object in `StaffHero.tsx`.
-- No changes to the link styling, modal, or quote button behavior — only the guarantee that the review button is always present.
-- After deploying, please tell me which profile was missing the button so I can verify the fix and correct any underlying name mismatch.
+4. **Drop `background-attachment: fixed`** (it doesn't work on iOS Safari anyway and hurts scroll perf). Re-create the parallax with a lightweight CSS `translate3d` on scroll via a small `useEffect` + `requestAnimationFrame`, or accept a static background on mobile and keep parallax desktop-only with `transform` instead of `fixed`.
 
+5. **Update `mem://style/hero-parallax`** to reflect the new local-asset + transform-based parallax approach.
+
+## Technical notes
+
+- Files in `public/` are served as-is by Vite with long cache headers — perfect for a hero asset that rarely changes.
+- The Supabase storage URL can stay as a fallback if you ever want a CMS-swappable image, but for the LCP asset, bundling locally is the right call.
+- After the change, expect LCP to drop from multi-second to well under 1s on a decent connection.
+
+Want me to proceed with this approach, or would you rather keep the image in Supabase storage (in which case I can still add WebP variants + preload, just hosted there)?

@@ -1,10 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Car, Home as HomeIcon, Heart, Briefcase } from "lucide-react";
 import Modal from "@/components/Modal";
 import QuoteForm from "@/components/QuoteForm";
-
-const heroBgUrl =
-  "https://lgykkvksbcjulwkbdbtk.supabase.co/storage/v1/object/public/herosection/Temple%20Office.jpg";
 
 type InsuranceType = "Auto" | "Home" | "Life" | "Business" | "";
 
@@ -18,22 +15,58 @@ const productTiles: { label: string; type: InsuranceType; icon: typeof Car }[] =
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [preselectedType, setPreselectedType] = useState<InsuranceType>("");
+  const imgRef = useRef<HTMLImageElement>(null);
 
   const openWithType = (type: InsuranceType) => {
     setPreselectedType(type);
     setIsModalOpen(true);
   };
 
+  // Lightweight transform-based parallax (desktop only, respects reduced motion)
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 640px) and (prefers-reduced-motion: no-preference)");
+    if (!mql.matches) return;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const el = imgRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        // Only translate while hero is roughly in view
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+        const offset = window.scrollY * 0.25;
+        el.style.transform = `translate3d(0, ${offset}px, 0)`;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <section className="hero-section relative overflow-hidden min-h-[calc(100svh-5rem)] flex items-end sm:items-center">
-      {/* Background image with parallax */}
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat bg-[center_bottom] sm:bg-[center_center]"
-        style={{
-          backgroundImage: `url(${heroBgUrl})`,
-          backgroundAttachment: "fixed",
-        }}
-      />
+      {/* Background image (responsive, preloaded, LCP) */}
+      <picture>
+        <source
+          type="image/webp"
+          srcSet="/hero/temple-office-800.webp 800w, /hero/temple-office-1200.webp 1200w, /hero/temple-office-1920.webp 1920w"
+          sizes="100vw"
+        />
+        <img
+          ref={imgRef}
+          src="/hero/temple-office-1920.jpg"
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-[115%] object-cover object-bottom sm:object-center will-change-transform"
+        />
+      </picture>
       {/* Gradient overlay: heavier at top for text legibility, lighter at bottom to show building */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/65 to-background/30 sm:from-background/70 sm:via-background/45 sm:to-background/20" />
 
