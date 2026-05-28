@@ -21,10 +21,6 @@ const jotFormConfigs: Record<string, { formId: string; height: string }> = {
     formId: "260154731872154",
     height: "539px",
   },
-  "Jon Gangale": {
-    formId: "260154416065148",
-    height: "539px",
-  },
   "Star Perry": {
     formId: "260155088019153",
     height: "539px",
