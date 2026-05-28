@@ -15,7 +15,7 @@ const leadershipTeam = [
 const salesTeam = [
   { name: "Brandon Foley", slug: "brandon" },
   { name: "Jennifer Boggiano", slug: "jennifer" },
-  { name: "Jon Gangale", slug: "jon" },
+  
   { name: "Natalia Fuentes", slug: "natalia" },
 ];
 
