@@ -21,10 +21,6 @@ const jotFormConfigs: Record<string, { formId: string; height: string }> = {
     formId: "260154731872154",
     height: "539px",
   },
-  "Jon Gangale": {
-    formId: "260154416065148",
-    height: "539px",
-  },
   "Star Perry": {
     formId: "260155088019153",
     height: "539px",
@@ -81,7 +77,7 @@ const googleReviewUrls: Record<string, string> = {
   "Grace Koch": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Haley Blackmon": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Jennifer Boggiano": "https://g.page/r/CcEdhnl-gcgLEBM/review",
-  "Jon Gangale": "https://g.page/r/Cc3NV9peP9zEEBM/review",
+  
   "Kara Townsend": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Kristin Maxwell": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Lola Flores": "https://g.page/r/CcEdhnl-gcgLEBM/review",
