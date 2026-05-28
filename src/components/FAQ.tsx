@@ -31,6 +31,18 @@ const faqs = [
     a: "Standard home policies do not cover flood. Anywhere along the coast, in a designated flood zone, or near a flood-prone area, separate NFIP or private flood coverage is essential.",
   },
   {
+    q: "Do I need TWIA or windstorm insurance in Corpus Christi?",
+    a: "If your property is in one of the 14 Texas first-tier coastal counties (Nueces County included), your standard homeowners policy almost certainly excludes wind and hail. You need TWIA — the Texas Windstorm Insurance Association — or a private windstorm policy. We quote both side-by-side.",
+  },
+  {
+    q: "When should I prep my coastal insurance for hurricane season?",
+    a: "Before June 1. NFIP flood policies have a 30-day waiting period, and TWIA closes binding entirely once a named storm enters the Gulf. The right window to review limits, deductibles, and gaps in your three-policy stack (home + wind + flood) is April-May, not when the cone shows up.",
+  },
+  {
+    q: "How does my roof age affect my coastal Texas insurance?",
+    a: "Roof age is the single biggest underwriting factor on a coastal homeowners policy. Roofs over 15 years often face Actual Cash Value settlement (vs. Replacement Cost), higher premiums, or non-renewal. Many homeowners do not realize their carrier has quietly switched their roof to ACV until they file a claim.",
+  },
+  {
     q: "How does the quote process work?",
     a: "Tell us about you (60 seconds), we compare options on your behalf, then you choose the coverage that fits. No obligation to bind.",
   },

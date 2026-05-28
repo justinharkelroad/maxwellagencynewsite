@@ -80,7 +80,6 @@ const Header = () => {
 
           {/* Desktop nav removed — using hamburger menu only */}
 
-
           <div className="flex items-center gap-3">
             {/* Call Now Button */}
             <a
@@ -221,6 +220,37 @@ const Header = () => {
                       ))}
                     </ul>
                   )}
+                </div>
+
+                {/* Our Story Link */}
+                <div className="mb-4">
+                  <Link
+                    to="/our-story"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center w-full px-4 py-3 rounded-lg hover:bg-muted transition-colors label-uppercase text-foreground hover:text-primary"
+                  >
+                    Our Story
+                  </Link>
+                </div>
+
+                {/* Locations */}
+                <div className="mb-2">
+                  <Link
+                    to="/locations/temple"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center w-full px-4 py-3 rounded-lg hover:bg-muted transition-colors label-uppercase text-foreground hover:text-primary"
+                  >
+                    Temple, TX Office
+                  </Link>
+                </div>
+                <div className="mb-4">
+                  <Link
+                    to="/locations/corpus-christi"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center w-full px-4 py-3 rounded-lg hover:bg-muted transition-colors label-uppercase text-foreground hover:text-primary"
+                  >
+                    Corpus Christi, TX Office
+                  </Link>
                 </div>
 
                 {/* Contact Us Link */}

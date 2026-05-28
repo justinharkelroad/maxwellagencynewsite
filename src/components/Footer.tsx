@@ -35,6 +35,7 @@ const products = [
 ];
 
 const company = [
+  { label: "Our Story", href: "/our-story" },
   { label: "Temple, TX Office", href: "/locations/temple" },
   { label: "Corpus Christi, TX Office", href: "/locations/corpus-christi" },
   { label: "Contact", href: "/contact" },

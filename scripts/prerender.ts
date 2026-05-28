@@ -26,6 +26,7 @@ const DIST = join(import.meta.dir, "..", "dist");
 const ROUTES = [
   "/",
   "/contact",
+  "/our-story",
   "/locations/temple",
   "/locations/corpus-christi",
   "/insurance/auto",
@@ -36,6 +37,9 @@ const ROUTES = [
   "/insurance/umbrella",
   "/insurance/renters",
   "/insurance/motorcycle-boat",
+  "/insurance/windstorm-twia",
+  "/insurance/hurricane-prep",
+  "/insurance/coastal-roof",
   "/privacy-policy",
   "/terms-of-service",
   "/kristin",

@@ -9,13 +9,27 @@ const LegacySection = () => {
               A Legacy of <span className="text-primary">Protection</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              The Maxwell family has been protecting Texas families for over three decades. 
-              What started with a great-grandfather selling life insurance door-to-door is now 
+              The Maxwell family has been protecting Texas families for over three decades.
+              What started with a great-grandfather selling life insurance door-to-door is now
               a 20+ person team serving Corpus Christi and Temple.
             </p>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              Maxwell Financial Group continues the work of the{" "}
+              <strong className="text-foreground">Laura Harris Agency</strong> —
+              the Corpus Christi practice founded by Kristin Maxwell&rsquo;s
+              mother and now led, with the same office and the same team,
+              by the next generation.{" "}
+              <a
+                href="/our-story"
+                className="text-primary font-semibold hover:underline"
+              >
+                Read our story
+              </a>
+              .
+            </p>
             <p className="text-muted-foreground leading-relaxed">
-              We understand that trust is earned over time. That's why we've built our 
-              reputation on clear communication, honest advice, and being there when 
+              We understand that trust is earned over time. That&rsquo;s why we&rsquo;ve built our
+              reputation on clear communication, honest advice, and being there when
               our clients need us most.
             </p>
           </div>

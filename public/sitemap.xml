@@ -21,6 +21,26 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://maxwellinsuranceagency.com/our-story</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://maxwellinsuranceagency.com/insurance/windstorm-twia</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://maxwellinsuranceagency.com/insurance/hurricane-prep</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://maxwellinsuranceagency.com/insurance/coastal-roof</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://maxwellinsuranceagency.com/insurance/auto</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
