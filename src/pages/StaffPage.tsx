@@ -105,16 +105,6 @@ const staffMembers: StaffMember[] = [
     email: "NataliaFuentes@Allstate.com",
     bio: "Natalia Fuentes is a licensed insurance agent who helps individuals and families find coverage for auto, home, renters, and motorcycle insurance. She is passionate about guiding customers through their options with care and clarity, helping them feel informed and confident in their decisions. Outside of work, Natalia is a proud mother who enjoys staying active, spending time with her children, and continuing to grow both personally and professionally. Her thoughtful, supportive approach helps customers feel heard and protected.",
   },
-  {
-    name: "Jon Gangale",
-    slug: "jon",
-    title: "Licensed Insurance Agent",
-    location: "Corpus Christi, TX",
-    image: "Jon Gangale.jpg",
-    phone: "361-298-3318",
-    email: "JonathanGangale@Allstate.com",
-    bio: "Jon Gangale is a licensed insurance agent with over a decade of experience helping individuals and families navigate coverage options for their homes, vehicles, and more. He enjoys working closely with customers to understand their needs and explain insurance in a clear, straightforward way. Outside of work, Jon values time with his wife, Chelsea, whether they're relaxing at home or exploring new places together. He takes pride in helping customers feel informed and confident in the choices they make.",
-  },
   // Customer Service Team
   {
     name: "Alayna Sudduth",
