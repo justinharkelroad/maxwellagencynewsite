@@ -14,9 +14,9 @@ const REVIEW_COUNT = "485";
 const REVIEW_RATING = "4.8";
 const FAMILIES_PROTECTED = "254-294-3311";
 
-const TESTIMONIAL_QUOTE =
-  "REPLACE_WITH_REAL_CLIENT_QUOTE"; // TODO(maxwell): 12-20 words
-const TESTIMONIAL_NAME = "REPLACE_NAME, City"; // TODO(maxwell): e.g. "Sarah M., Temple"
+const TESTIMONIAL_QUOTE = "Super friendly service from the start!";
+const TESTIMONIAL_NAME = "Liz, Texas";
+
 
 const SocialProof = () => {
   return (
