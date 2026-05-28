@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Car, Home as HomeIcon, Heart, Briefcase } from "lucide-react";
+import { Car, Home as HomeIcon, Heart, Briefcase, Phone } from "lucide-react";
 import Modal from "@/components/Modal";
 import QuoteForm from "@/components/QuoteForm";
 
@@ -22,7 +22,6 @@ const Hero = () => {
     setIsModalOpen(true);
   };
 
-  // Lightweight transform-based parallax (desktop only, respects reduced motion)
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 640px) and (prefers-reduced-motion: no-preference)");
     if (!mql.matches) return;
@@ -34,7 +33,6 @@ const Hero = () => {
         const el = imgRef.current;
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        // Only translate while hero is roughly in view
         if (rect.bottom < 0 || rect.top > window.innerHeight) return;
         const offset = window.scrollY * 0.25;
         el.style.transform = `translate3d(0, ${offset}px, 0)`;
@@ -50,7 +48,6 @@ const Hero = () => {
 
   return (
     <section className="hero-section relative overflow-hidden min-h-[calc(100svh-5rem)] flex items-end sm:items-center">
-      {/* Background image (responsive, preloaded, LCP) */}
       <picture>
         <source
           type="image/webp"
@@ -60,39 +57,47 @@ const Hero = () => {
         <img
           ref={imgRef}
           src="/hero/temple-office-1920.jpg"
-          alt=""
-          aria-hidden="true"
+          alt="Maxwell Financial Group Temple, Texas insurance office"
           fetchPriority="high"
           decoding="async"
           className="absolute inset-0 w-full h-[115%] object-cover object-bottom sm:object-center will-change-transform"
         />
       </picture>
-      {/* Gradient overlay: heavier at top for text legibility, lighter at bottom to show building */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/65 to-background/30 sm:from-background/70 sm:via-background/45 sm:to-background/20" />
 
       <div className="container-custom px-4 sm:px-6 lg:px-8 relative z-10 w-full py-10 sm:py-16">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Headline */}
           <h1
             className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] mb-3 sm:mb-5 animate-fade-in opacity-0 [text-shadow:0_2px_16px_hsl(var(--background)/0.9),0_1px_3px_hsl(var(--background))]"
             style={{ animationDelay: "0.1s" }}
           >
-            Protecting What <br className="hidden sm:block" />
-            <span className="text-primary">Matters Most</span>
+            Texas Insurance That <br className="hidden sm:block" />
+            <span className="text-primary">Actually Calls You Back</span>
           </h1>
 
-          {/* Subheadline */}
           <p
-            className="text-base sm:text-lg lg:text-xl text-foreground/95 mb-6 sm:mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in opacity-0 [text-shadow:0_2px_12px_hsl(var(--background)/0.9),0_1px_2px_hsl(var(--background))]"
+            className="text-base sm:text-lg lg:text-xl text-foreground/95 mb-4 sm:mb-6 max-w-2xl mx-auto leading-relaxed animate-fade-in opacity-0 [text-shadow:0_2px_12px_hsl(var(--background)/0.9),0_1px_2px_hsl(var(--background))]"
             style={{ animationDelay: "0.25s" }}
           >
-            Fourth-generation Texas agency.
+            Auto, home, life, business — covered by a fourth-generation Texas family agency.
             <br className="sm:hidden" />
             <span className="hidden sm:inline"> </span>
-            Asset protection &amp; risk mitigation.
+            Serving Temple, Corpus Christi, and all of Texas.
           </p>
 
-          {/* 2x2 Icon grid */}
+          {/* Visible hero phone CTA */}
+          <a
+            href="tel:2542943311"
+            className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors mb-6 sm:mb-8 animate-fade-in opacity-0 [text-shadow:0_2px_12px_hsl(var(--background)/0.9)]"
+            style={{ animationDelay: "0.3s" }}
+            aria-label="Call Maxwell Financial Group Temple office at (254) 294-3311"
+          >
+            <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+            <span className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold">
+              (254) 294-3311
+            </span>
+          </a>
+
           <div
             className="grid grid-cols-2 gap-3 sm:gap-5 max-w-md sm:max-w-2xl mx-auto mb-6 sm:mb-10 animate-fade-in opacity-0"
             style={{ animationDelay: "0.4s" }}
@@ -119,7 +124,6 @@ const Hero = () => {
             })}
           </div>
 
-          {/* Primary CTA */}
           <div
             className="max-w-md sm:max-w-xl mx-auto animate-fade-in opacity-0"
             style={{ animationDelay: "0.55s" }}
@@ -128,13 +132,15 @@ const Hero = () => {
               onClick={() => openWithType("")}
               className="btn-gold w-full text-base sm:text-lg py-3 sm:py-4"
             >
-              Get a Quote Now
+              Get My Free Quote
             </button>
+            <p className="text-xs sm:text-sm text-foreground/85 mt-3 [text-shadow:0_1px_8px_hsl(var(--background)/0.9)]">
+              60-second form &middot; No obligation &middot; We never sell your info
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Quote Modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

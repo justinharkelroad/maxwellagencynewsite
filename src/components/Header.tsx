@@ -60,10 +60,10 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <header 
+    <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "bg-background/95 backdrop-blur-md border-b border-border" 
+        isScrolled
+          ? "bg-background/95 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
     >
@@ -71,12 +71,68 @@ const Header = () => {
         <div className="flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img 
-              src={mfgLogo} 
-              alt="Maxwell Financial Group" 
+            <img
+              src={mfgLogo}
+              alt="Maxwell Financial Group"
               className="h-14 sm:h-16 w-auto"
             />
           </Link>
+
+          {/* Desktop nav — visible at lg+ */}
+          <nav
+            className="hidden lg:flex items-center gap-6 xl:gap-8"
+            aria-label="Primary"
+          >
+            <a
+              href="/#services"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >
+              Coverage
+            </a>
+            <a
+              href="/#how-it-works"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >
+              How It Works
+            </a>
+            <a
+              href="/#faq"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >
+              FAQ
+            </a>
+            <div className="relative group">
+              <button
+                type="button"
+                className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1"
+              >
+                Locations
+                <ChevronDown className="w-3 h-3" />
+              </button>
+              <div className="absolute right-0 top-full pt-2 hidden group-hover:block">
+                <div className="bg-background border border-border rounded-lg shadow-lg py-2 min-w-[14rem]">
+                  <Link
+                    to="/locations/temple"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary"
+                  >
+                    Temple, TX
+                  </Link>
+                  <Link
+                    to="/locations/corpus-christi"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-secondary hover:text-primary"
+                  >
+                    Corpus Christi, TX
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <Link
+              to="/contact"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            >
+              Contact
+            </Link>
+          </nav>
 
           <div className="flex items-center gap-3">
             {/* Call Now Button */}
@@ -85,7 +141,8 @@ const Header = () => {
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-4 py-2 rounded-md text-sm hover:bg-primary/90 transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span>Call Now</span>
+              <span className="hidden sm:inline">(254) 294-3311</span>
+              <span className="sm:hidden">Call</span>
             </a>
 
             {/* Hamburger Menu Button */}

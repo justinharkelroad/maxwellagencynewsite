@@ -17,6 +17,8 @@ import BusinessInsurance from "./pages/products/BusinessInsurance";
 import FloodInsurance from "./pages/products/FloodInsurance";
 import MotorcycleBoatInsurance from "./pages/products/MotorcycleBoatInsurance";
 import UmbrellaInsurance from "./pages/products/UmbrellaInsurance";
+import TempleLocation from "./pages/locations/TempleLocation";
+import CorpusChristiLocation from "./pages/locations/CorpusChristiLocation";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 
@@ -33,6 +35,8 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/locations/temple" element={<TempleLocation />} />
+            <Route path="/locations/corpus-christi" element={<CorpusChristiLocation />} />
             <Route path="/:slug" element={<StaffPage />} />
             <Route path="/insurance/auto" element={<AutoInsurance />} />
             <Route path="/insurance/home" element={<HomeInsurance />} />

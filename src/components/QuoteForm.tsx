@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -34,8 +35,11 @@ interface SaveResponse {
   message?: string;
 }
 
+type Step = 1 | 2;
+
 const QuoteForm = ({ onSuccess, initialInsuranceType }: QuoteFormProps) => {
   const { toast } = useToast();
+  const [step, setStep] = useState<Step>(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     ...emptyForm,
@@ -96,7 +100,41 @@ const QuoteForm = ({ onSuccess, initialInsuranceType }: QuoteFormProps) => {
     [callSave],
   );
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const updateField = <K extends keyof typeof formData>(
+    key: K,
+    value: (typeof formData)[K],
+  ) => {
+    setFormData((prev) => {
+      const next = { ...prev, [key]: value };
+      scheduleAutoSave(next);
+      return next;
+    });
+  };
+
+  const advanceToStep2 = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.name.trim()) {
+      toast({ title: "Please enter your name", variant: "destructive" });
+      return;
+    }
+    if (!formData.phone.trim()) {
+      toast({ title: "Please enter your phone number", variant: "destructive" });
+      return;
+    }
+    if (!formData.insurance_type) {
+      toast({ title: "Please select an insurance type", variant: "destructive" });
+      return;
+    }
+
+    // Fire an early autosave so the partial lead is captured even if they bounce.
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    void callSave(formData);
+
+    setStep(2);
+  };
+
+  const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (hp) {
@@ -107,16 +145,8 @@ const QuoteForm = ({ onSuccess, initialInsuranceType }: QuoteFormProps) => {
       return;
     }
 
-    if (
-      !formData.name.trim() ||
-      !formData.email.trim() ||
-      !formData.phone.trim() ||
-      !formData.insurance_type
-    ) {
-      toast({
-        title: "Please fill in all required fields",
-        variant: "destructive",
-      });
+    if (!formData.email.trim()) {
+      toast({ title: "Please enter your email address", variant: "destructive" });
       return;
     }
 
@@ -160,6 +190,7 @@ const QuoteForm = ({ onSuccess, initialInsuranceType }: QuoteFormProps) => {
       });
       setFormData({ ...emptyForm, insurance_type: initialInsuranceType ?? "" });
       sessionTokenRef.current = null;
+      setStep(1);
       onSuccess?.();
     } catch {
       toast({
@@ -172,19 +203,11 @@ const QuoteForm = ({ onSuccess, initialInsuranceType }: QuoteFormProps) => {
     }
   };
 
-  const updateField = <K extends keyof typeof formData>(
-    key: K,
-    value: (typeof formData)[K],
-  ) => {
-    setFormData((prev) => {
-      const next = { ...prev, [key]: value };
-      scheduleAutoSave(next);
-      return next;
-    });
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form
+      onSubmit={step === 1 ? advanceToStep2 : handleFinalSubmit}
+      className="space-y-4"
+    >
       {/* Honeypot — hidden from users + assistive tech */}
       <div
         aria-hidden="true"
@@ -209,99 +232,146 @@ const QuoteForm = ({ onSuccess, initialInsuranceType }: QuoteFormProps) => {
         </label>
       </div>
 
-      <div>
-        <label className="text-sm font-medium text-popover-foreground mb-1 block">
-          Name *
-        </label>
-        <Input
-          value={formData.name}
-          onChange={(e) => updateField("name", e.target.value)}
-          placeholder="Your full name"
-          maxLength={255}
-          autoComplete="name"
-          className="bg-popover text-popover-foreground border-border"
+      {/* Step indicator */}
+      <div
+        className="flex items-center justify-center gap-2 text-xs text-popover-foreground/60"
+        aria-label={`Step ${step} of 2`}
+      >
+        <span
+          className={`h-1.5 rounded-full transition-all ${
+            step === 1 ? "w-8 bg-primary" : "w-6 bg-primary"
+          }`}
         />
-      </div>
-
-      <div>
-        <label className="text-sm font-medium text-popover-foreground mb-1 block">
-          Phone *
-        </label>
-        <Input
-          type="tel"
-          value={formData.phone}
-          onChange={(e) => updateField("phone", e.target.value)}
-          placeholder="(254) 555-0123"
-          maxLength={50}
-          autoComplete="tel"
-          className="bg-popover text-popover-foreground border-border"
+        <span
+          className={`h-1.5 rounded-full transition-all ${
+            step === 2 ? "w-8 bg-primary" : "w-6 bg-popover-foreground/20"
+          }`}
         />
+        <span className="ml-2">Step {step} of 2</span>
       </div>
 
-      <div>
-        <label className="text-sm font-medium text-popover-foreground mb-1 block">
-          Email *
-        </label>
-        <Input
-          type="email"
-          value={formData.email}
-          onChange={(e) => updateField("email", e.target.value)}
-          placeholder="your@email.com"
-          maxLength={255}
-          autoComplete="email"
-          className="bg-popover text-popover-foreground border-border"
-        />
-      </div>
+      {step === 1 && (
+        <>
+          <div>
+            <label className="text-sm font-medium text-popover-foreground mb-1 block">
+              Name *
+            </label>
+            <Input
+              value={formData.name}
+              onChange={(e) => updateField("name", e.target.value)}
+              placeholder="Your full name"
+              maxLength={255}
+              autoComplete="name"
+              className="bg-popover text-popover-foreground border-border"
+            />
+          </div>
 
-      <div>
-        <label className="text-sm font-medium text-popover-foreground mb-1 block">
-          Insurance Type *
-        </label>
-        <Select
-          value={formData.insurance_type}
-          onValueChange={(value) => updateField("insurance_type", value)}
-        >
-          <SelectTrigger className="bg-popover text-popover-foreground border-border">
-            <SelectValue placeholder="Select insurance type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="Auto">Auto Insurance</SelectItem>
-            <SelectItem value="Home">Home Insurance</SelectItem>
-            <SelectItem value="Life">Life Insurance</SelectItem>
-            <SelectItem value="Business">Business Insurance</SelectItem>
-            <SelectItem value="Renters">Renters Insurance</SelectItem>
-            <SelectItem value="Flood">Flood &amp; Storm</SelectItem>
-            <SelectItem value="Umbrella">Umbrella Insurance</SelectItem>
-            <SelectItem value="Specialty">Boat / Motorcycle / RV</SelectItem>
-            <SelectItem value="Other">Other</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
+          <div>
+            <label className="text-sm font-medium text-popover-foreground mb-1 block">
+              Phone *
+            </label>
+            <Input
+              type="tel"
+              value={formData.phone}
+              onChange={(e) => updateField("phone", e.target.value)}
+              placeholder="(254) 555-0123"
+              maxLength={50}
+              autoComplete="tel"
+              className="bg-popover text-popover-foreground border-border"
+            />
+          </div>
 
-      <div>
-        <label className="text-sm font-medium text-popover-foreground mb-1 block">
-          Message
-        </label>
-        <Textarea
-          value={formData.message}
-          onChange={(e) => updateField("message", e.target.value)}
-          placeholder="Tell us about your insurance needs..."
-          rows={3}
-          maxLength={2000}
-          className="bg-popover text-popover-foreground border-border"
-        />
-      </div>
+          <div>
+            <label className="text-sm font-medium text-popover-foreground mb-1 block">
+              Insurance Type *
+            </label>
+            <Select
+              value={formData.insurance_type}
+              onValueChange={(value) => updateField("insurance_type", value)}
+            >
+              <SelectTrigger className="bg-popover text-popover-foreground border-border">
+                <SelectValue placeholder="Select insurance type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Auto">Auto Insurance</SelectItem>
+                <SelectItem value="Home">Home Insurance</SelectItem>
+                <SelectItem value="Life">Life Insurance</SelectItem>
+                <SelectItem value="Business">Business Insurance</SelectItem>
+                <SelectItem value="Renters">Renters Insurance</SelectItem>
+                <SelectItem value="Flood">Flood &amp; Storm</SelectItem>
+                <SelectItem value="Umbrella">Umbrella Insurance</SelectItem>
+                <SelectItem value="Specialty">Boat / Motorcycle / RV</SelectItem>
+                <SelectItem value="Other">Other</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Submitting..." : "Submit Quote Request"}
-      </Button>
+          <Button type="submit" className="w-full">
+            Continue
+          </Button>
 
-      <p className="text-xs text-center text-popover-foreground/60">
-        We'll respond within 24 hours. Or call us at{" "}
-        <a href="tel:2542943311" className="text-primary hover:underline">
-          (254) 294-3311
-        </a>
-      </p>
+          <p className="text-xs text-center text-popover-foreground/70 leading-relaxed">
+            100% free quote &middot; No obligation &middot; We never sell your info
+          </p>
+        </>
+      )}
+
+      {step === 2 && (
+        <>
+          <button
+            type="button"
+            onClick={() => setStep(1)}
+            className="inline-flex items-center gap-1 text-sm text-popover-foreground/70 hover:text-primary transition-colors"
+          >
+            <ArrowLeft className="w-3 h-3" />
+            Back
+          </button>
+
+          <div>
+            <label className="text-sm font-medium text-popover-foreground mb-1 block">
+              Email *
+            </label>
+            <Input
+              type="email"
+              value={formData.email}
+              onChange={(e) => updateField("email", e.target.value)}
+              placeholder="your@email.com"
+              maxLength={255}
+              autoComplete="email"
+              className="bg-popover text-popover-foreground border-border"
+              autoFocus
+            />
+          </div>
+
+          <div>
+            <label className="text-sm font-medium text-popover-foreground mb-1 block">
+              Anything we should know? <span className="text-popover-foreground/50 font-normal">(optional)</span>
+            </label>
+            <Textarea
+              value={formData.message}
+              onChange={(e) => updateField("message", e.target.value)}
+              placeholder="Current carrier, renewal date, specific coverage questions..."
+              rows={3}
+              maxLength={2000}
+              className="bg-popover text-popover-foreground border-border"
+            />
+          </div>
+
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "Get My Free Quote"}
+          </Button>
+
+          <p className="text-xs text-center text-popover-foreground/70 leading-relaxed">
+            100% free quote &middot; No obligation &middot; We never sell your info
+          </p>
+          <p className="text-xs text-center text-popover-foreground/60">
+            We&rsquo;ll respond within 24 hours. Or call us at{" "}
+            <a href="tel:2542943311" className="text-primary hover:underline">
+              (254) 294-3311
+            </a>
+          </p>
+        </>
+      )}
     </form>
   );
 };

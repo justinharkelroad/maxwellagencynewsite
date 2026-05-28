@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Modal from "@/components/Modal";
+import ReferralForm from "@/components/ReferralForm";
 
 interface ReferralCTAProps {
   staffName: string;
@@ -17,29 +18,29 @@ const ReferralCTA = ({ staffName }: ReferralCTAProps) => {
             Know Someone Who Needs Coverage?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Send me a referral and earn $20 when they get a quote!
+            Send {staffName} a referral. We&rsquo;ll handle the rest — no
+            awkward intros, no hard sell, just a quick conversation about
+            what they need.
           </p>
           <Button
             variant="hero"
             size="lg"
             onClick={() => setIsModalOpen(true)}
           >
-            Get a Quote Now
+            Refer a Friend
           </Button>
         </div>
       </div>
 
-      {/* Referral Modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         title={`Send ${staffName} a Referral`}
       >
-        <div className="border-2 border-dashed border-border rounded-lg p-8 text-center">
-          <p className="text-muted-foreground">
-            Jotform embed will go here
-          </p>
-        </div>
+        <ReferralForm
+          staffName={staffName}
+          onSuccess={() => setIsModalOpen(false)}
+        />
       </Modal>
     </section>
   );

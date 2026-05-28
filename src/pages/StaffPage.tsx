@@ -1,6 +1,7 @@
 import { useParams, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import StaffHero from "@/components/StaffHero";
+import ReferralCTA from "@/components/ReferralCTA";
 import Footer from "@/components/Footer";
 
 interface StaffMember {
@@ -220,6 +221,9 @@ const StaffPage = () => {
           showStars={staffMember.slug === "star"}
           hideQuoteButton={staffMember.hideQuoteButton}
         />
+        {!staffMember.hideQuoteButton && (
+          <ReferralCTA staffName={staffMember.name.split(" ")[0]} />
+        )}
       </main>
       <Footer />
     </div>
