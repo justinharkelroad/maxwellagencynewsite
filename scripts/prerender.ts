@@ -45,7 +45,7 @@ const ROUTES = [
   "/kara",
   "/brandon",
   "/jennifer",
-  "/jon",
+  
   "/natalia",
   "/alayna",
   "/angel",
