@@ -77,7 +77,7 @@ const googleReviewUrls: Record<string, string> = {
   "Grace Koch": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Haley Blackmon": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Jennifer Boggiano": "https://g.page/r/CcEdhnl-gcgLEBM/review",
-  "Jon Gangale": "https://g.page/r/Cc3NV9peP9zEEBM/review",
+  
   "Kara Townsend": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Kristin Maxwell": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Lola Flores": "https://g.page/r/CcEdhnl-gcgLEBM/review",
