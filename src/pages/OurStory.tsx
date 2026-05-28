@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FamilyPolaroids from "@/components/FamilyPolaroids";
 import { Phone, MapPin, Users, Award, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -83,22 +84,10 @@ const OurStory = () => {
           </div>
         </section>
 
-        {/* Photo placeholder */}
-        <section className="py-12 bg-background">
+        {/* Family snapshots */}
+        <section className="py-12 sm:py-16 bg-background">
           <div className="container-custom max-w-4xl">
-            <div className="aspect-[16/9] rounded-xl bg-secondary border-2 border-dashed border-border flex items-center justify-center text-center p-8">
-              {/* TODO(maxwell): replace with a photo of Laura Harris + Kristin Maxwell (or just Laura, or just the office) */}
-              <div>
-                <Users className="w-16 h-16 text-muted-foreground/40 mx-auto mb-3" />
-                <p className="text-sm text-muted-foreground">
-                  <strong className="text-foreground">
-                    TODO(maxwell):
-                  </strong>{" "}
-                  Photo of Laura Harris + Kristin Maxwell (or office,
-                  multi-generation team photo).
-                </p>
-              </div>
-            </div>
+            <FamilyPolaroids />
           </div>
         </section>
 
