@@ -10,9 +10,10 @@ import { Star } from "lucide-react";
  *   - TESTIMONIAL_QUOTE → real client quote (12-20 words)
  *   - TESTIMONIAL_NAME  → first name + last initial, city
  */
-const REVIEW_COUNT = "REPLACE_REVIEW_COUNT"; // TODO(maxwell): real count
-const REVIEW_RATING = "REPLACE_RATING";       // TODO(maxwell): e.g. "4.9"
-const FAMILIES_PROTECTED = "REPLACE_NUMBER";  // TODO(maxwell): e.g. "2,500+"
+const REVIEW_COUNT = "485";
+const REVIEW_RATING = "4.8";
+const FAMILIES_PROTECTED = "254-294-3311";
+
 const TESTIMONIAL_QUOTE =
   "REPLACE_WITH_REAL_CLIENT_QUOTE"; // TODO(maxwell): 12-20 words
 const TESTIMONIAL_NAME = "REPLACE_NAME, City"; // TODO(maxwell): e.g. "Sarah M., Temple"
