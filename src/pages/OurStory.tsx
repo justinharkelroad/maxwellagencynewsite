@@ -131,14 +131,7 @@ const OurStory = () => {
                 grew up inside the agency. She began her own insurance career
                 in 1994 and worked alongside her mother for years before
                 stepping into ownership of the practice. In{" "}
-                {TRANSITION_YEAR === "REPLACE_TRANSITION_YEAR" ? (
-                  <span className="bg-amber-500/20 px-1 rounded text-foreground">
-                    [TRANSITION YEAR — REPLACE]
-                  </span>
-                ) : (
-                  TRANSITION_YEAR
-                )}
-                , the agency took on her name: Maxwell Financial Group.
+                {TRANSITION_YEAR}, the agency took on her name: Maxwell Financial Group.
               </p>
               <p>
                 What did <strong>not</strong> change: the office address on
