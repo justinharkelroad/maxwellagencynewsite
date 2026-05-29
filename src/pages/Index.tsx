@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
+import CarrierBar from "@/components/CarrierBar";
 import Reviews from "@/components/Reviews";
 import HowItWorks from "@/components/HowItWorks";
 import ValueProposition from "@/components/ValueProposition";
@@ -16,6 +17,7 @@ const Index = () => {
       <main className="flex-1">
         <Hero />
         <SocialProof />
+        <CarrierBar />
         <ValueProposition />
         <Reviews />
         <HowItWorks />
