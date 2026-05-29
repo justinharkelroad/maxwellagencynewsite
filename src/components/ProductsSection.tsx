@@ -12,7 +12,7 @@ const products: ProductData[] = [
   {
     icon: Car,
     title: "Auto Insurance",
-    description: "Texas minimum 30/60/25 or full coverage. Quote in 60 seconds.",
+    description: "Real protection built around how you drive — not just the state minimum. Quote in 60 seconds.",
     slug: "/insurance/auto",
   },
   {

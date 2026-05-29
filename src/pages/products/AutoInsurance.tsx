@@ -131,7 +131,7 @@ const AutoInsurance = () => {
               Get Your Free Texas Auto Insurance Quote Today
             </h2>
             <p className="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-              Compare rates from top carriers. Our independent agents find you the best coverage 
+              Our licensed Texas agents find you the best coverage
               at the lowest price in Temple, Corpus Christi, and throughout Texas.
             </p>
             <Button size="lg" variant="secondary" className="gap-2" asChild>

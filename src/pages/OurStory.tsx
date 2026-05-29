@@ -100,7 +100,7 @@ const OurStory = () => {
             <div className="prose prose-lg max-w-none text-foreground/90 space-y-4">
               <p>
                 In {LEGACY_FOUNDED}, <strong>Laura Harris</strong> opened her
-                independent insurance practice in Corpus Christi, Texas.
+                insurance practice in Corpus Christi, Texas.
                 Over the decades that followed, the Laura Harris Agency
                 became known across the Coastal Bend for one thing above all
                 else: a real person on the phone, calling clients back the
@@ -178,7 +178,7 @@ const OurStory = () => {
                 {
                   icon: Users,
                   title: "Staff continuity",
-                  body: "Many of the team members who worked with Laura are still here. Grace Koch joined in 1988. Decades of Coastal Bend client relationships, unbroken.",
+                  body: "Many of the team members who worked with Laura are still here. Grace Koch started in Allstate claims back in 1988 and joined the agency in 2002. Decades of Coastal Bend client relationships, unbroken.",
                 },
                 {
                   icon: Award,
