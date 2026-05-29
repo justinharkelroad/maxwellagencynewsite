@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
  *   - LEGACY_FOUNDED_YEAR → year Laura Harris Agency was founded (currently "early 1990s")
  */
 
-const TRANSITION_YEAR = "REPLACE_TRANSITION_YEAR"; // TODO(maxwell)
+const TRANSITION_YEAR = "2024";
 const LEGACY_FOUNDED = "the early 1990s"; // TODO(maxwell): replace with actual founding year
 
 const OurStory = () => {
