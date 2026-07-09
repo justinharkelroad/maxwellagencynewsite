@@ -28,9 +28,11 @@ const TempleLocation = () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "InsuranceAgency",
-            "@id": "https://maxwellinsuranceagency.com/locations/temple#org",
+            "@id": "https://maxwellinsuranceagency.com/locations/temple#office",
             name: "Maxwell Financial Group - Temple",
             url: "https://maxwellinsuranceagency.com/locations/temple",
+            branchOf: { "@id": "https://maxwellinsuranceagency.com/#org" },
+            parentOrganization: { "@id": "https://maxwellinsuranceagency.com/#org" },
             telephone: "+1-254-294-3311",
             image: "https://maxwellinsuranceagency.com/og/homepage.jpg",
             address: {
@@ -46,18 +48,26 @@ const TempleLocation = () => {
               latitude: 31.0821,
               longitude: -97.3428,
             },
-            openingHoursSpecification: {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-              ],
-              opens: "09:00",
-              closes: "18:00",
-            },
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                ],
+                opens: "09:00",
+                closes: "18:00",
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Saturday", "Sunday"],
+                opens: "00:00",
+                closes: "00:00",
+              },
+            ],
             areaServed: [
               { "@type": "City", name: "Temple" },
               { "@type": "City", name: "Belton" },

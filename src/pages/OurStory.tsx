@@ -166,7 +166,7 @@ const OurStory = () => {
                 {
                   icon: MapPin,
                   title: "Same office, same address",
-                  body: "3837 South Padre Island Drive in Corpus Christi. Same phone, (361) 317-7044, that clients have called for years.",
+                  body: "3837 S Padre Island Dr in Corpus Christi. Same phone, (361) 317-7044, that clients have called for years.",
                 },
                 {
                   icon: Users,

@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && bun run prerender",
+    "build": "vite build && bun run prerender && bun run verify:seo && bun run verify:redirects",
     "build:spa": "vite build",
     "build:dev": "vite build --mode development",
     "prerender": "bun scripts/prerender.ts",
+    "verify:seo": "bun scripts/verifySeo.ts",
+    "verify:redirects": "bun scripts/verifyRedirects.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",

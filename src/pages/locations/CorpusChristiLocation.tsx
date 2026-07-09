@@ -28,9 +28,11 @@ const CorpusChristiLocation = () => {
             "@context": "https://schema.org",
             "@type": "InsuranceAgency",
             "@id":
-              "https://maxwellinsuranceagency.com/locations/corpus-christi#org",
+              "https://maxwellinsuranceagency.com/locations/corpus-christi#office",
             name: "Maxwell Financial Group - Corpus Christi",
             url: "https://maxwellinsuranceagency.com/locations/corpus-christi",
+            branchOf: { "@id": "https://maxwellinsuranceagency.com/#org" },
+            parentOrganization: { "@id": "https://maxwellinsuranceagency.com/#org" },
             telephone: "+1-361-317-7044",
             image: "https://maxwellinsuranceagency.com/og/homepage.jpg",
             address: {
@@ -46,18 +48,26 @@ const CorpusChristiLocation = () => {
               latitude: 27.7006,
               longitude: -97.365,
             },
-            openingHoursSpecification: {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-              ],
-              opens: "09:00",
-              closes: "18:00",
-            },
+            openingHoursSpecification: [
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                ],
+                opens: "09:00",
+                closes: "18:00",
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Saturday", "Sunday"],
+                opens: "00:00",
+                closes: "00:00",
+              },
+            ],
             areaServed: [
               { "@type": "City", name: "Corpus Christi" },
               { "@type": "City", name: "Portland" },

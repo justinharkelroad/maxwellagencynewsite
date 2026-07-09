@@ -9,57 +9,28 @@
  * and writes it to dist/<route>/index.html. The runtime hydrate path in
  * main.tsx attaches React to the prerendered DOM with hydrateRoot.
  *
- * Fail-safe: if anything blows up, the original dist/index.html stays in
- * place and the site ships as a normal SPA. No deploy is blocked.
+ * Per-route <head> metadata comes from src/lib/seo.ts and is stamped in by
+ * rewriteHead() before each file is written. Without it every page would inherit
+ * index.html's homepage canonical, title and FAQPage schema.
  *
- * Routes to prerender are listed in ROUTES below.
+ * This step is REQUIRED, not best-effort. A prerender failure used to fall back
+ * to shipping a plain SPA with a green build — which silently reverts the entire
+ * SEO/GEO surface while looking like a successful deploy. Any route that fails
+ * now fails the build. Prefer a red deploy over an invisible regression.
+ *
+ * Routes are derived from ROUTE_SEO — the route list cannot drift from the
+ * metadata that describes it.
  */
 import { spawn } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import puppeteer, { type Browser } from "puppeteer";
+import { ROUTES } from "../src/lib/seo";
+import { rewriteHead } from "./seoHead";
 
 const PORT = 4173;
 const ORIGIN = `http://127.0.0.1:${PORT}`;
 const DIST = join(import.meta.dir, "..", "dist");
-
-const ROUTES = [
-  "/",
-  "/contact",
-  "/our-story",
-  "/locations/temple",
-  "/locations/corpus-christi",
-  "/insurance/auto",
-  "/insurance/home",
-  "/insurance/life",
-  "/insurance/business",
-  "/insurance/flood-storm",
-  "/insurance/umbrella",
-  "/insurance/renters",
-  "/insurance/motorcycle-boat",
-  "/insurance/windstorm-twia",
-  "/insurance/hurricane-prep",
-  "/insurance/coastal-roof",
-  "/privacy-policy",
-  "/terms-of-service",
-  "/kristin",
-  "/bill",
-  "/chris",
-  "/grace",
-  "/kara",
-  "/brandon",
-  "/jennifer",
-  
-  "/natalia",
-  "/alayna",
-  "/angel",
-  "/gina",
-  "/haley",
-  "/lola",
-  "/nicole",
-  "/salina",
-  "/star",
-];
 
 async function waitForServer(url: string, timeoutMs = 20_000): Promise<void> {
   const start = Date.now();
@@ -87,7 +58,7 @@ async function renderRoute(browser: Browser, route: string): Promise<void> {
     // to settle before snapshot.
     await new Promise((r) => setTimeout(r, 250));
 
-    const html = await page.content();
+    const html = rewriteHead(await page.content(), route);
 
     const target =
       route === "/"
@@ -142,17 +113,24 @@ async function main(): Promise<void> {
     console.log(`[prerender] rendering ${ROUTES.length} routes`);
     // Render sequentially — keeps puppeteer memory predictable and avoids
     // overwhelming the dev server. Build time is dominated by Vite, not this.
+    const failures: string[] = [];
     for (const route of ROUTES) {
       try {
         await renderRoute(browser, route);
       } catch (err) {
-        console.warn(
-          `  ✗ ${route} — ${(err as Error).message} (SPA fallback will serve)`,
-        );
+        console.error(`  ✗ ${route} — ${(err as Error).message}`);
+        failures.push(route);
       }
     }
 
-    console.log(`[prerender] done`);
+    if (failures.length > 0) {
+      throw new Error(
+        `${failures.length}/${ROUTES.length} routes failed to prerender: ${failures.join(", ")}. ` +
+          `Refusing to ship an unprerendered SPA.`,
+      );
+    }
+
+    console.log(`[prerender] done — ${ROUTES.length}/${ROUTES.length} routes`);
   } finally {
     if (browser) await browser.close();
     server.kill();

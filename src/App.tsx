@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import ScrollToTop from "@/components/ScrollToTop";
+import { RouteSeo } from "@/hooks/useSeo";
 import Index from "./pages/Index";
 import StaffPage from "./pages/StaffPage";
 import ContactPage from "./pages/ContactPage";
@@ -36,6 +37,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <RouteSeo />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/contact" element={<ContactPage />} />
