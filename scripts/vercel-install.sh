@@ -37,4 +37,11 @@ fi
 echo "[vercel-install] installing app dependencies"
 bun install
 
+# Install Chromium explicitly rather than relying on puppeteer's post-install hook.
+# When Vercel restores node_modules from its build cache the hook never runs, and the
+# build then fails with "Could not find Chrome" — a cache hit silently breaking the
+# browser download. This command is idempotent: it no-ops if the browser is present.
+echo "[vercel-install] ensuring Chromium is present"
+bunx puppeteer browsers install chrome
+
 echo "[vercel-install] done"
