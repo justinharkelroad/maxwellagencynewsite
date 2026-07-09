@@ -14,7 +14,9 @@ import { RETIRED_URLS } from "../src/data/retiredUrls";
 interface VercelRedirect {
   source: string;
   destination: string;
+  /** Vercel emits HTTP 308 for `permanent: true`. We want a literal 301. */
   permanent?: boolean;
+  statusCode?: number;
 }
 
 const config = (await Bun.file(join(import.meta.dir, "..", "vercel.json")).json()) as {
@@ -29,8 +31,13 @@ for (const retired of RETIRED_URLS) {
     failures.push(`${retired.path} is retired but has no redirect in vercel.json — it will soft-404`);
     continue;
   }
-  if (hit.permanent !== true) {
-    failures.push(`${retired.path} redirect is not permanent — a 302 does not pass authority`);
+  // Insist on a literal 301. `permanent: true` makes Vercel emit 308, which Google treats
+  // as equivalent, but a lot of SEO tooling and backlink checkers only special-case 301.
+  // Verified live on the preview deploy: permanent:true → "HTTP/2 308".
+  if (hit.statusCode !== 301) {
+    failures.push(
+      `${retired.path} redirect is ${hit.statusCode ?? (hit.permanent ? "308 (permanent:true)" : "302")} — want a literal statusCode: 301`,
+    );
   }
   if (hit.destination !== retired.redirectTo) {
     failures.push(`${retired.path} redirects to ${hit.destination}, but retiredUrls.ts says ${retired.redirectTo}`);

@@ -9,7 +9,7 @@
     {
       "source": "/jon",
       "destination": "/",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "rewrites": [
