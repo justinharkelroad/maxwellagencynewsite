@@ -20,7 +20,7 @@
  * interpret `$&`, `$1`, `$'` etc. inside a description as a replacement pattern and
  * silently corrupt the output.
  */
-import { ROUTE_SEO, breadcrumbFor, canonicalFor } from "../src/lib/seo";
+import { ROUTE_SEO, NOT_FOUND_SEO, breadcrumbFor, canonicalFor } from "../src/lib/seo";
 
 const escapeHtml = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -172,6 +172,36 @@ export function rewriteHead(html: string, route: string): string {
   head = head.replace(/[ \t]*\n{3,}/g, "\n\n");
 
   assertHead(head, route, { titleTag, canonicalTag, canonical, seo, isHome });
+
+  return head + body;
+}
+
+/**
+ * Head for dist/404.html. Served with a real HTTP 404, so indexing is already prevented;
+ * `noindex` is belt-and-braces. It carries no canonical (a 404 has no canonical URL) and
+ * no page-scoped structured data, but keeps the site chrome so the page looks like ours.
+ */
+export function rewriteNotFoundHead(html: string): string {
+  const headEnd = html.search(/<\/head>/i);
+  if (headEnd === -1) throw new Error("No </head> found in the 404 capture");
+
+  let head = html.slice(0, headEnd + "</head>".length);
+  const body = html.slice(headEnd + "</head>".length);
+
+  head = sub(head, /<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(NOT_FOUND_SEO.title)}</title>`);
+  head = sub(head, /<link[^>]*\brel="canonical"[^>]*>/i, "");
+  head = setMeta(head, "name", "description", NOT_FOUND_SEO.description);
+  head = setMeta(head, "name", "robots", "noindex, follow");
+
+  // Strip every JSON-LD block: none of it describes a 404.
+  for (const block of ldBlocks(head)) head = sub(head, new RegExp(escapeRe(block.raw)), "");
+  head = dropComment(head, "Entity graph");
+  head = dropComment(head, "FAQPage Schema");
+  head = dropComment(head, "BreadcrumbList Schema");
+  head = head.replace(/[ \t]*\n{3,}/g, "\n\n");
+
+  if (!head.includes('content="noindex, follow"')) throw new Error("404 page: robots noindex missing");
+  if (head.includes('rel="canonical"')) throw new Error("404 page: canonical should be absent");
 
   return head + body;
 }

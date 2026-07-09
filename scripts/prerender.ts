@@ -25,8 +25,8 @@ import { spawn } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import puppeteer, { type Browser } from "puppeteer";
-import { ROUTES } from "../src/lib/seo";
-import { rewriteHead } from "./seoHead";
+import { NOT_FOUND_ROUTE, ROUTES } from "../src/lib/seo";
+import { rewriteHead, rewriteNotFoundHead } from "./seoHead";
 
 const PORT = 4173;
 const ORIGIN = `http://127.0.0.1:${PORT}`;
@@ -130,7 +130,19 @@ async function main(): Promise<void> {
       );
     }
 
-    console.log(`[prerender] done — ${ROUTES.length}/${ROUTES.length} routes`);
+    // dist/404.html — Vercel serves this for any unmatched URL, with a real 404 status.
+    // Without it, a stale link lands the visitor on Vercel's unbranded NOT_FOUND page.
+    const page = await browser.newPage();
+    try {
+      await page.goto(`${ORIGIN}${NOT_FOUND_ROUTE}`, { waitUntil: "networkidle0", timeout: 30_000 });
+      await new Promise((r) => setTimeout(r, 250));
+      await writeFile(join(DIST, "404.html"), rewriteNotFoundHead(await page.content()), "utf8");
+      console.log("  ✓ 404.html");
+    } finally {
+      await page.close();
+    }
+
+    console.log(`[prerender] done — ${ROUTES.length}/${ROUTES.length} routes + 404.html`);
   } finally {
     if (browser) await browser.close();
     server.kill();

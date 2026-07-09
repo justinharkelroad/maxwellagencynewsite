@@ -172,6 +172,22 @@ export const ROUTE_SEO: Record<string, RouteSeo> = {
 /** Every route the prerenderer should snapshot. Derived, so it cannot drift. */
 export const ROUTES: string[] = Object.keys(ROUTE_SEO);
 
+/**
+ * A path that matches no route, so the SPA renders its NotFound page. The prerenderer
+ * visits it and writes the result to dist/404.html, which Vercel serves (with a real 404
+ * status) for any unmatched URL. Without it, visitors following a stale link land on
+ * Vercel's unbranded "NOT_FOUND" page.
+ *
+ * Two segments on purpose: a single-segment path would match the `/:slug` staff route.
+ */
+export const NOT_FOUND_ROUTE = "/__not-found/__not-found";
+
+export const NOT_FOUND_SEO = {
+  title: "Page Not Found | Maxwell Financial Group",
+  description:
+    "That page does not exist. Find Texas auto, home, life, business and coastal insurance from our Temple and Corpus Christi offices.",
+};
+
 /** Breadcrumb trail for a route: Home → [intermediate] → self. */
 export function breadcrumbFor(route: string) {
   if (route === "/") {

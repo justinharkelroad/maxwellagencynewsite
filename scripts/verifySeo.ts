@@ -104,7 +104,23 @@ for (const route of ["/locations/temple", "/locations/corpus-christi"]) {
   ok(body.includes('"@type":"InsuranceAgency"'), `[${route}] lost its body-level office node`);
 }
 
-console.log(`[verify:seo] checked ${ROUTES.length} prerendered routes`);
+// dist/404.html — branded, noindex, no canonical, no structured data.
+{
+  const f = Bun.file(join(DIST, "404.html"));
+  if (!(await f.exists())) {
+    failures.push("dist/404.html missing — Vercel would serve its unbranded NOT_FOUND page");
+  } else {
+    const html = await f.text();
+    const head = html.slice(0, html.search(/<\/head>/i));
+    ok(/content="noindex, follow"/.test(head), "[404] missing robots noindex");
+    ok(!/rel="canonical"/.test(head), "[404] should carry no canonical");
+    ok(!/application\/ld\+json/.test(head), "[404] should carry no structured data");
+    ok(/<title>Page Not Found/.test(head), "[404] wrong title");
+    ok(/<footer|Maxwell/i.test(html), "[404] lost the site chrome — is it really our page?");
+  }
+}
+
+console.log(`[verify:seo] checked ${ROUTES.length} prerendered routes + 404.html`);
 if (failures.length) {
   console.error(`\n[verify:seo] ${failures.length} FAILURE(S):`);
   failures.forEach((f) => console.error(`  ✗ ${f}`));
