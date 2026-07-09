@@ -78,6 +78,23 @@ for (const route of ROUTES) {
     }
   }
 
+  // Tracking: exactly the tags the template authors, no prerender-injected leftovers.
+  ok(count(/googletagmanager\.com\/gtag\/js/g, head) === 1, `${at} expected exactly one gtag loader`);
+  // Match the <script> ELEMENT, not the substring: Metricool's inline loader contains the
+  // literal `c.src="https://tracker.metricool.com/resources/be.js"` in its own source.
+  ok(
+    count(/<script[^>]*\bsrc="https:\/\/tracker\.metricool\.com/g, head) === 0,
+    `${at} baked Metricool be.js <script> tag would double-count`,
+  );
+  ok(
+    count(/<script[^>]*\b(?:googleads\.g\.doubleclick\.net|googleadservices\.com)/g, head) === 0,
+    `${at} stale Ads conversion beacon baked into HTML`,
+  );
+  ok(!/127\.0\.0\.1:4173/.test(html), `${at} build-server localhost URL leaked into the page`);
+  ok(/beTracker\.t\(/.test(head), `${at} Metricool inline loader missing`);
+  ok(/G-73VC1BR2HS/.test(head), `${at} GA4 measurement ID missing`);
+  ok(/AW-796676965/.test(head), `${at} Google Ads ID missing`);
+
   if (route === "/") {
     ok(types.includes("FAQPage"), `${at} homepage lost its FAQPage`);
     ok(types.includes("InsuranceAgency"), `${at} homepage lost its org @graph`);

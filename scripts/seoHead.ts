@@ -110,6 +110,59 @@ function dropComment(head: string, label: string): string {
 /** Count non-overlapping matches. */
 const count = (head: string, re: RegExp) => [...head.matchAll(re)].length;
 
+const TRACKING_HOST =
+  /googletagmanager\.com|tracker\.metricool\.com|google-analytics\.com|googleads\.g\.doubleclick\.net|googleadservices\.com|googlesyndication\.com/;
+
+/** `src` of every <script> the template's own <head> authors. Everything else is injected. */
+const AUTHORED_SCRIPT_SRCS: Set<string> = await (async () => {
+  const tpl = await Bun.file(new URL("../index.html", import.meta.url)).text();
+  const head = tpl.slice(0, tpl.search(/<\/head>/i));
+  return new Set([...head.matchAll(/<script[^>]*\bsrc="([^"]*)"/g)].map((m) => m[1]));
+})();
+
+/**
+ * Remove analytics <script> elements that the page injected while it was being rendered.
+ *
+ * puppeteer serializes the DOM *after* gtag.js and Metricool's loader have run, so their
+ * dynamically-appended <script> tags get frozen into the static HTML. Left in, they cause:
+ *   - Metricool double-counting (baked be.js tag loads, then the inline loader appends another)
+ *   - a stale Google Ads conversion beacon whose `url=` param is the build server's localhost
+ *   - a gtag loader pinned to whatever container hash existed at build time
+ *
+ * Only scripts the template itself authors survive. Inline scripts are untouched — the gtag
+ * config and Metricool loader must still run in the visitor's browser.
+ */
+export function stripInjectedTracking(head: string): string {
+  for (const m of head.matchAll(/<script\b[^>]*\bsrc="([^"]*)"[^>]*>\s*<\/script>/g)) {
+    const src = m[1].replace(/&amp;/g, "&");
+    if (!TRACKING_HOST.test(src)) continue;
+    if (AUTHORED_SCRIPT_SRCS.has(m[1]) || AUTHORED_SCRIPT_SRCS.has(src)) continue;
+    head = sub(head, new RegExp(escapeRe(m[0])), "");
+  }
+  return head.replace(/[ \t]*\n{3,}/g, "\n\n");
+}
+
+/** Every authored tracking script survived; every injected one is gone. */
+function assertTracking(head: string, route: string): void {
+  const srcs = [...head.matchAll(/<script\b[^>]*\bsrc="([^"]*)"[^>]*>\s*<\/script>/g)]
+    .map((m) => m[1].replace(/&amp;/g, "&"))
+    .filter((s) => TRACKING_HOST.test(s));
+
+  const unexpected = srcs.filter((s) => !AUTHORED_SCRIPT_SRCS.has(s));
+  if (unexpected.length) {
+    throw new Error(`[${route}] injected tracking script survived: ${unexpected.join(", ")}`);
+  }
+  // The inline gtag config and Metricool loader must still be present — stripping a src tag
+  // must never take an inline script with it.
+  if (!/beTracker\.t\(/.test(head)) throw new Error(`[${route}] Metricool inline loader is missing`);
+  if (!/gtag\('config'/.test(head) && !/gtag\("config"/.test(head)) {
+    throw new Error(`[${route}] gtag config block is missing`);
+  }
+  if (count(head, /googletagmanager\.com\/gtag\/js/g) !== 1) {
+    throw new Error(`[${route}] expected exactly one gtag loader, found ${count(head, /googletagmanager\.com\/gtag\/js/g)}`);
+  }
+}
+
 /**
  * @param html full captured page HTML
  * @param route the route this HTML was rendered for, e.g. "/insurance/auto"
@@ -168,10 +221,13 @@ export function rewriteHead(html: string, route: string): string {
   }
   head = dropComment(head, "BreadcrumbList Schema");
 
+  head = stripInjectedTracking(head);
+
   // Collapse the blank-line craters left where blocks were removed.
   head = head.replace(/[ \t]*\n{3,}/g, "\n\n");
 
   assertHead(head, route, { titleTag, canonicalTag, canonical, seo, isHome });
+  assertTracking(head, route);
 
   return head + body;
 }
@@ -198,10 +254,12 @@ export function rewriteNotFoundHead(html: string): string {
   head = dropComment(head, "Entity graph");
   head = dropComment(head, "FAQPage Schema");
   head = dropComment(head, "BreadcrumbList Schema");
+  head = stripInjectedTracking(head);
   head = head.replace(/[ \t]*\n{3,}/g, "\n\n");
 
   if (!head.includes('content="noindex, follow"')) throw new Error("404 page: robots noindex missing");
   if (head.includes('rel="canonical"')) throw new Error("404 page: canonical should be absent");
+  assertTracking(head, "404.html");
 
   return head + body;
 }

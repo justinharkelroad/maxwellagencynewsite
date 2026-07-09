@@ -46,9 +46,35 @@ async function waitForServer(url: string, timeoutMs = 20_000): Promise<void> {
   throw new Error(`Server at ${url} did not become ready within ${timeoutMs}ms`);
 }
 
+/**
+ * Analytics hosts blocked while prerendering.
+ *
+ * Without this, every build sends 34 pageviews to GA4, Google Ads and Metricool from the
+ * build server — real, indistinguishable traffic in the reports. Blocking the requests also
+ * stops gtag.js from executing, so it never injects the extra <script> tags and the stale
+ * Ads conversion beacon that would otherwise be frozen into the static HTML.
+ */
+const ANALYTICS_HOSTS = [
+  "googletagmanager.com",
+  "google-analytics.com",
+  "googleadservices.com",
+  "googleads.g.doubleclick.net",
+  "googlesyndication.com",
+  "tracker.metricool.com",
+];
+
+async function blockAnalytics(page: import("puppeteer").Page): Promise<void> {
+  await page.setRequestInterception(true);
+  page.on("request", (req) => {
+    if (ANALYTICS_HOSTS.some((h) => req.url().includes(h))) void req.abort();
+    else void req.continue();
+  });
+}
+
 async function renderRoute(browser: Browser, route: string): Promise<void> {
   const page = await browser.newPage();
   try {
+    await blockAnalytics(page);
     await page.setViewport({ width: 1280, height: 800 });
     await page.goto(`${ORIGIN}${route}`, {
       waitUntil: "networkidle0",
@@ -134,6 +160,7 @@ async function main(): Promise<void> {
     // Without it, a stale link lands the visitor on Vercel's unbranded NOT_FOUND page.
     const page = await browser.newPage();
     try {
+      await blockAnalytics(page);
       await page.goto(`${ORIGIN}${NOT_FOUND_ROUTE}`, { waitUntil: "networkidle0", timeout: 30_000 });
       await new Promise((r) => setTimeout(r, 250));
       await writeFile(join(DIST, "404.html"), rewriteNotFoundHead(await page.content()), "utf8");
