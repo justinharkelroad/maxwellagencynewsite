@@ -27,7 +27,13 @@ const StaffPage = () => {
           bio={staffMember.bio}
           phone={staffMember.phone}
           email={staffMember.email}
-          imageUrl={staffMember.image ? `${SUPABASE_URL}/storage/v1/object/public/staffimages/${encodeURIComponent(staffMember.image)}` : undefined}
+          imageUrl={
+            staffMember.image
+              ? staffMember.image.startsWith("/")
+                ? encodeURI(staffMember.image)
+                : `${SUPABASE_URL}/storage/v1/object/public/staffimages/${encodeURIComponent(staffMember.image)}`
+              : undefined
+          }
           showStars={staffMember.slug === "star"}
           hideQuoteButton={staffMember.hideQuoteButton}
         />

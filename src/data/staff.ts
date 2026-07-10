@@ -12,6 +12,7 @@ export interface StaffMember {
   title: string;
   location: string;
   bio?: string;
+  /** Supabase staffimages filename, or a "/" -prefixed path served from public/ */
   image?: string;
   phone?: string;
   email?: string;
@@ -96,6 +97,15 @@ export const staffMembers: StaffMember[] = [
     bio: "Jennifer Boggiano is an experienced insurance professional with over 20 years in the industry, specializing in auto, homeowners, life, and commercial insurance. She enjoys helping customers feel confident and supported as they choose coverage that fits their lives. Outside of work, Jennifer values time with her family and loves getting lost in a good book. She is bilingual in English and Spanish, allowing her to serve a diverse range of clients.",
   },
   {
+    name: "Joseph Downs",
+    slug: "joseph",
+    title: "Licensed Insurance Agent",
+    location: "Corpus Christi, TX",
+    phone: "361-492-4313",
+    email: "JosephDowns@Allstate.com",
+    bio: "Joseph Downs is a dedicated insurance professional who enjoys helping individuals and families protect what matters most. He takes pride in building strong relationships with clients and providing personalized service that makes the insurance process simple and stress-free. Outside of work, Joseph enjoys spending time with his child, playing guitar, exploring story-driven video games, and learning about history and real estate. His commitment to personal growth, exceptional customer service, and helping others makes him a valued member of our team.",
+  },
+  {
     name: "Natalia Fuentes",
     slug: "natalia",
     title: "Licensed Insurance Agent",
@@ -127,6 +137,16 @@ export const staffMembers: StaffMember[] = [
     bio: "Angel Delgadillo is an insurance professional known for his thoughtful approach and creativity. He focuses on helping clients feel comfortable and informed by breaking down coverage in a clear, relatable way. Outside of work, Angel enjoys spending time outdoors hiking and playing disc golf, as well as writing, gaming, and unwinding with his cat, Peanut. Angel's curiosity and steady, personable nature make him a trusted advisor who's ready to help in any way he can!",
   },
   {
+    name: "Gavin Price",
+    slug: "gavin",
+    title: "Insurance Professional",
+    location: "Corpus Christi, TX",
+    image: "/Gavin Headshot.png",
+    phone: "361-245-5265",
+    email: "GavinPrice@Allstate.com",
+    bio: "Gavin Price is a dedicated insurance professional who is passionate about helping individuals and families protect what matters most. He enjoys building lasting relationships with clients and takes pride in providing personalized guidance and exceptional customer service. Outside of work, Gavin enjoys building racecars, staying active in the gym, and spending time with his six Australian Shepherds. His positive attitude, strong work ethic, and commitment to serving others make him a valued member of our team.",
+  },
+  {
     name: "Gina Oliva",
     slug: "gina",
     title: "Insurance Professional",
@@ -145,6 +165,16 @@ export const staffMembers: StaffMember[] = [
     phone: "254-331-8251",
     email: "HBlackmon@Allstate.com",
     bio: "Haley Blackmon is a dedicated insurance professional who brings heart, creativity, and a genuine passion for helping others into everything she does. Haley enjoys building meaningful relationships with clients and takes pride in ensuring families are properly protected for what matters most. Outside of work, she is an animal lover who spends much of her free time with her six Australian Shepherds, as well as painting, practicing calligraphy, and enjoying board games with family. Her warmth, creativity, and genuine care make her a valued member of our team and a trusted resource for clients.",
+  },
+  {
+    name: "Josie Vasquez",
+    slug: "josie",
+    title: "Insurance Professional",
+    location: "Temple, TX",
+    image: "/JosieHeadshot.png",
+    phone: "254-331-8249",
+    email: "JosieVasquez@Allstate.com",
+    bio: "Meet Josie Vasquez, a dedicated insurance professional who is passionate about helping individuals and families protect what matters most. She enjoys building lasting relationships with clients, simplifying the insurance process, and providing personalized guidance so every customer feels confident in their coverage decisions.\n\nOutside of the office, Josie loves cooking, spending time at the beach, and enjoying days out on the boat with family and friends. Her warm personality, commitment to exceptional service, and genuine passion for helping others make her a trusted resource for customers seeking protection and peace of mind.",
   },
   {
     name: "Lola Flores",
@@ -185,5 +215,16 @@ export const staffMembers: StaffMember[] = [
     phone: "361-494-5989",
     email: "StarPerry@Allstate.com",
     bio: "Star Perry brings a steady, reassuring presence to every client interaction, helping customers navigate insurance decisions with clarity and confidence. She focuses on simplifying complex coverage options and providing guidance that feels thoughtful and easy to understand. Star values building genuine relationships and supporting clients through important decisions. Originally from New Mexico, she carries an appreciation for the outdoors and a grounded perspective that shapes the way she connects with others.",
+  },
+  // Admin Team
+  {
+    name: "Danielle Kelly",
+    slug: "danielle",
+    title: "Administrative Professional",
+    location: "Corpus Christi, TX",
+    image: "/Danielle headshot.png",
+    phone: "361-336-2640",
+    email: "DanielleKelly@Allstate.com",
+    bio: "Meet Danielle Kelly, a compassionate insurance professional whose 10-year nursing career inspired her passion for helping others. She takes pride in making insurance easy to understand, building lasting relationships, and helping clients find coverage that fits their unique needs. Danielle believes every customer deserves personalized guidance and the confidence that comes from knowing they're protected.\n\nA proud Texas native who has also lived in Hawaii, Colorado, and North Dakota, Danielle enjoys traveling, photography, hiking, and trail running in her free time. Her caring nature, adventurous spirit, and commitment to exceptional service make her a trusted resource for customers looking to protect what matters most.",
   },
 ];
