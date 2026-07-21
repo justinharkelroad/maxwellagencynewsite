@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FamilyPolaroids from "@/components/FamilyPolaroids";
+import VimeoAutoplay from "@/components/VimeoAutoplay";
 import { Phone, MapPin, Users, Award, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -81,6 +82,18 @@ const OurStory = () => {
                 daughter Kristin Maxwell.
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* Welcome video */}
+        <section className="py-12 sm:py-16 bg-background">
+          <div className="container-custom max-w-4xl">
+            <VimeoAutoplay
+              videoId="1211738657"
+              hash="31634fcbdc"
+              title="A welcome from Maxwell Financial Group"
+              posterUrl="https://i.vimeocdn.com/video/2181986931-0e35efcb47f9249fc00273c3de70268b7ec968805a92ce991653ccb374b97058-d_1280"
+            />
           </div>
         </section>
 
