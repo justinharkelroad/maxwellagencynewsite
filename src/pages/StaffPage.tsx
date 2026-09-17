@@ -34,7 +34,6 @@ const StaffPage = () => {
                 : `${SUPABASE_URL}/storage/v1/object/public/staffimages/${encodeURIComponent(staffMember.image)}`
               : undefined
           }
-          showStars={staffMember.slug === "star"}
           hideQuoteButton={staffMember.hideQuoteButton}
         />
         {!staffMember.hideQuoteButton && (

@@ -21,10 +21,6 @@ const jotFormConfigs: Record<string, { formId: string; height: string }> = {
     formId: "260154731872154",
     height: "539px",
   },
-  "Star Perry": {
-    formId: "260155088019153",
-    height: "539px",
-  },
   "Brandon Foley": {
     formId: "260154407278154",
     height: "539px",
@@ -84,7 +80,6 @@ const googleReviewUrls: Record<string, string> = {
   "Natalia Fuentes": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Nicole Tafur": "https://g.page/r/CcEdhnl-gcgLEBM/review",
   "Salina Rodriguez": "https://g.page/r/CcEdhnl-gcgLEBM/review",
-  "Star Perry": "https://g.page/r/CcEdhnl-gcgLEBM/review",
 };
 
 interface StaffHeroProps {

@@ -25,11 +25,9 @@ const customerServiceTeam = [
   { name: "Gavin Price", slug: "gavin" },
   { name: "Gina Oliva", slug: "gina" },
   { name: "Haley Blackmon", slug: "haley" },
-  { name: "Josie Vasquez", slug: "josie" },
   { name: "Lola Flores", slug: "lola" },
   { name: "Nicole Tafur", slug: "nicole" },
   { name: "Salina Rodriguez", slug: "salina" },
-  { name: "Star Perry", slug: "star" },
 ];
 
 const adminTeam = [

@@ -24,6 +24,16 @@ export interface RetiredUrl {
 
 export const RETIRED_URLS: RetiredUrl[] = [
   {
+    path: "/josie",
+    redirectTo: "/",
+    reason: "Josie Vasquez profile removed at the agency's request on 2026-09-17.",
+  },
+  {
+    path: "/star",
+    redirectTo: "/",
+    reason: "Star Perry profile removed at the agency's request on 2026-09-17.",
+  },
+  {
     path: "/jon",
     redirectTo: "/",
     reason: "Jon Gangale (Licensed Insurance Agent, Corpus Christi) no longer with the agency. Confirmed 2026-07-09.",

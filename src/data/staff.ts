@@ -167,16 +167,6 @@ export const staffMembers: StaffMember[] = [
     bio: "Haley Blackmon is a dedicated insurance professional who brings heart, creativity, and a genuine passion for helping others into everything she does. Haley enjoys building meaningful relationships with clients and takes pride in ensuring families are properly protected for what matters most. Outside of work, she is an animal lover who spends much of her free time with her six Australian Shepherds, as well as painting, practicing calligraphy, and enjoying board games with family. Her warmth, creativity, and genuine care make her a valued member of our team and a trusted resource for clients.",
   },
   {
-    name: "Josie Vasquez",
-    slug: "josie",
-    title: "Insurance Professional",
-    location: "Temple, TX",
-    image: "/JosieHeadshot.png",
-    phone: "254-331-8249",
-    email: "JosieVasquez@Allstate.com",
-    bio: "Meet Josie Vasquez, a dedicated insurance professional who is passionate about helping individuals and families protect what matters most. She enjoys building lasting relationships with clients, simplifying the insurance process, and providing personalized guidance so every customer feels confident in their coverage decisions.\n\nOutside of the office, Josie loves cooking, spending time at the beach, and enjoying days out on the boat with family and friends. Her warm personality, commitment to exceptional service, and genuine passion for helping others make her a trusted resource for customers seeking protection and peace of mind.",
-  },
-  {
     name: "Lola Flores",
     slug: "lola",
     title: "Insurance Professional",
@@ -205,16 +195,6 @@ export const staffMembers: StaffMember[] = [
     phone: "361-730-1928",
     email: "SmRodriguez@Allstate.com",
     bio: "Salina Rodriguez is a knowledgeable insurance professional with nearly two decades of experience supporting customers through coverage questions and policy decisions. She is known for explaining insurance in a clear, practical way that helps customers feel comfortable and informed. Outside of work, Salina enjoys traveling, cheering on her favorite sports teams, and spending quality time with her family. Her calm, knowledgeable presence helps customers navigate insurance with confidence.",
-  },
-  {
-    name: "Star Perry",
-    slug: "star",
-    title: "Insurance Professional",
-    location: "Corpus Christi, TX",
-    image: "Star headshot.jpg",
-    phone: "361-494-5989",
-    email: "StarPerry@Allstate.com",
-    bio: "Star Perry brings a steady, reassuring presence to every client interaction, helping customers navigate insurance decisions with clarity and confidence. She focuses on simplifying complex coverage options and providing guidance that feels thoughtful and easy to understand. Star values building genuine relationships and supporting clients through important decisions. Originally from New Mexico, she carries an appreciation for the outdoors and a grounded perspective that shapes the way she connects with others.",
   },
   // Admin Team
   {

@@ -7,6 +7,16 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/josie",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/star",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/jon",
       "destination": "/",
       "statusCode": 301
