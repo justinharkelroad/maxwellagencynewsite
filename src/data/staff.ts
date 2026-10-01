@@ -101,6 +101,7 @@ export const staffMembers: StaffMember[] = [
     slug: "joseph",
     title: "Licensed Insurance Agent",
     location: "Corpus Christi, TX",
+    image: "/Joe Headshot.png",
     phone: "361-492-4313",
     email: "JosephDowns@Allstate.com",
     bio: "Joseph Downs is a dedicated insurance professional who enjoys helping individuals and families protect what matters most. He takes pride in building strong relationships with clients and providing personalized service that makes the insurance process simple and stress-free. Outside of work, Joseph enjoys spending time with his child, playing guitar, exploring story-driven video games, and learning about history and real estate. His commitment to personal growth, exceptional customer service, and helping others makes him a valued member of our team.",
@@ -135,6 +136,16 @@ export const staffMembers: StaffMember[] = [
     phone: "361-470-2167",
     email: "AngelDelgadillo@Allstate.com",
     bio: "Angel Delgadillo is an insurance professional known for his thoughtful approach and creativity. He focuses on helping clients feel comfortable and informed by breaking down coverage in a clear, relatable way. Outside of work, Angel enjoys spending time outdoors hiking and playing disc golf, as well as writing, gaming, and unwinding with his cat, Peanut. Angel's curiosity and steady, personable nature make him a trusted advisor who's ready to help in any way he can!",
+  },
+  {
+    name: "Danielle Kelly",
+    slug: "danielle",
+    title: "Insurance Professional",
+    location: "Corpus Christi, TX",
+    image: "/Danielle headshot.png",
+    phone: "361-336-2640",
+    email: "DanielleKelly@Allstate.com",
+    bio: "Meet Danielle Kelly, a compassionate insurance professional whose 10-year nursing career inspired her passion for helping others. She takes pride in making insurance easy to understand, building lasting relationships, and helping clients find coverage that fits their unique needs. Danielle believes every customer deserves personalized guidance and the confidence that comes from knowing they're protected.\n\nA proud Texas native who has also lived in Hawaii, Colorado, and North Dakota, Danielle enjoys traveling, photography, hiking, and trail running in her free time. Her caring nature, adventurous spirit, and commitment to exceptional service make her a trusted resource for customers looking to protect what matters most.",
   },
   {
     name: "Gavin Price",
@@ -195,16 +206,5 @@ export const staffMembers: StaffMember[] = [
     phone: "361-730-1928",
     email: "SmRodriguez@Allstate.com",
     bio: "Salina Rodriguez is a knowledgeable insurance professional with nearly two decades of experience supporting customers through coverage questions and policy decisions. She is known for explaining insurance in a clear, practical way that helps customers feel comfortable and informed. Outside of work, Salina enjoys traveling, cheering on her favorite sports teams, and spending quality time with her family. Her calm, knowledgeable presence helps customers navigate insurance with confidence.",
-  },
-  // Admin Team
-  {
-    name: "Danielle Kelly",
-    slug: "danielle",
-    title: "Administrative Professional",
-    location: "Corpus Christi, TX",
-    image: "/Danielle headshot.png",
-    phone: "361-336-2640",
-    email: "DanielleKelly@Allstate.com",
-    bio: "Meet Danielle Kelly, a compassionate insurance professional whose 10-year nursing career inspired her passion for helping others. She takes pride in making insurance easy to understand, building lasting relationships, and helping clients find coverage that fits their unique needs. Danielle believes every customer deserves personalized guidance and the confidence that comes from knowing they're protected.\n\nA proud Texas native who has also lived in Hawaii, Colorado, and North Dakota, Danielle enjoys traveling, photography, hiking, and trail running in her free time. Her caring nature, adventurous spirit, and commitment to exceptional service make her a trusted resource for customers looking to protect what matters most.",
   },
 ];

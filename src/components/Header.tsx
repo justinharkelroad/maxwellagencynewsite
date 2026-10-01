@@ -22,6 +22,7 @@ const salesTeam = [
 const customerServiceTeam = [
   { name: "Alayna Sudduth", slug: "alayna" },
   { name: "Angel Delgadillo", slug: "angel" },
+  { name: "Danielle Kelly", slug: "danielle" },
   { name: "Gavin Price", slug: "gavin" },
   { name: "Gina Oliva", slug: "gina" },
   { name: "Haley Blackmon", slug: "haley" },
@@ -30,17 +31,12 @@ const customerServiceTeam = [
   { name: "Salina Rodriguez", slug: "salina" },
 ];
 
-const adminTeam = [
-  { name: "Danielle Kelly", slug: "danielle" },
-];
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLeadershipOpen, setIsLeadershipOpen] = useState(false);
   const [isSalesOpen, setIsSalesOpen] = useState(false);
   const [isServiceOpen, setIsServiceOpen] = useState(false);
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -211,36 +207,6 @@ const Header = () => {
                   {isServiceOpen && (
                     <ul className="mt-2 ml-4 space-y-1 border-l border-border pl-4 bg-secondary relative z-10">
                       {customerServiceTeam.map((member) => (
-                        <li key={member.slug}>
-                          <Link
-                            to={`/${member.slug}`}
-                            onClick={() => setIsMenuOpen(false)}
-                            className="block px-4 py-2 rounded-lg text-foreground hover:bg-muted hover:text-primary transition-colors font-medium text-sm bg-secondary"
-                          >
-                            {member.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
-                {/* Admin Team Folder */}
-                <div className="mb-4">
-                  <button
-                    onClick={() => setIsAdminOpen(!isAdminOpen)}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg hover:bg-muted transition-colors bg-secondary"
-                  >
-                    <span className="label-uppercase">Admin Team</span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-primary transition-transform duration-200 ${
-                        isAdminOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                  {isAdminOpen && (
-                    <ul className="mt-2 ml-4 space-y-1 border-l border-border pl-4 bg-secondary relative z-10">
-                      {adminTeam.map((member) => (
                         <li key={member.slug}>
                           <Link
                             to={`/${member.slug}`}
