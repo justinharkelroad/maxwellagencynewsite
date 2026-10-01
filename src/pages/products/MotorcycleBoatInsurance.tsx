@@ -30,7 +30,7 @@ const MotorcycleBoatInsurance = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="gap-2" asChild>
-                  <a href="tel:+12542943311">
+                  <a href="tel:+13613177044">
                     <Phone className="w-5 h-5" />
                     Get a Quote Now
                   </a>
@@ -242,9 +242,9 @@ const MotorcycleBoatInsurance = () => {
               Competitive rates for Temple, Corpus Christi, and riders and boaters across Texas.
             </p>
             <Button size="lg" variant="secondary" className="gap-2" asChild>
-              <a href="tel:+12542943311">
+              <a href="tel:+13613177044">
                 <Phone className="w-5 h-5" />
-                Call (254) 294-3311
+                Call (361) 317-7044
               </a>
             </Button>
           </div>

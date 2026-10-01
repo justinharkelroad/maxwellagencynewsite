@@ -35,13 +35,13 @@ const STATIC_ROUTES: Record<string, RouteSeo> = {
   "/": {
     title: "Insurance in Temple & Corpus Christi TX | Maxwell Financial",
     description:
-      "Texas insurance in Temple & Corpus Christi: auto, home, life, business, flood & coastal windstorm (TWIA). Free quote in 60 seconds. Call (254) 294-3311.",
+      "Texas insurance in Temple & Corpus Christi: auto, home, life, business, flood & coastal windstorm (TWIA). Free quote in 60 seconds. Call (361) 317-7044.",
     breadcrumb: "Home",
   },
   "/contact": {
     title: "Contact Maxwell Financial Group | Temple & Corpus Christi",
     description:
-      "Reach our Temple (254) 294-3311 or Corpus Christi (361) 317-7044 office. Get a Texas insurance quote or ask a coverage question — we reply within 24 hours.",
+      "Call Maxwell Financial Group at (361) 317-7044 for a Texas insurance quote or coverage question — we reply within 24 hours.",
     breadcrumb: "Contact",
   },
   "/our-story": {

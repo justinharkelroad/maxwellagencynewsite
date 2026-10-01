@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: "How do I file a claim?",
-    a: "Call your office directly: Temple (254) 294-3311 or Corpus Christi (361) 317-7044. We will walk you through the claim process step by step.",
+    a: "Call us at (361) 317-7044. We will walk you through the claim process step by step.",
   },
 ];
 
@@ -89,13 +89,6 @@ const FAQ = () => {
 
         <p className="text-center text-sm text-charcoal/70 mt-10">
           Don&rsquo;t see your question? Call us at{" "}
-          <a
-            href="tel:2542943311"
-            className="text-primary font-semibold hover:underline"
-          >
-            (254) 294-3311
-          </a>{" "}
-          or{" "}
           <a
             href="tel:3613177044"
             className="text-primary font-semibold hover:underline"

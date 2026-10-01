@@ -17,7 +17,7 @@ const locations = [
     name: "Temple Office",
     address: "201 Clinite Grove Blvd Ste 110",
     city: "Temple, TX 76502",
-    phone: "(254) 294-3311",
+    phone: "(361) 317-7044",
     email: "KristinMaxwell@Allstate.com",
     hours: "Mon-Fri: 9:00 AM - 6:00 PM",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3447.2!2d-97.3428!3d31.0821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8645d3a8f1e8c8c7%3A0x0!2s201%20Clinite%20Grove%20Blvd%20Ste%20110%2C%20Temple%2C%20TX%2076502!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus",
