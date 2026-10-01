@@ -51,13 +51,13 @@ const Hero = () => {
       <picture>
         <source
           type="image/webp"
-          srcSet="/hero/temple-office-800.webp 800w, /hero/temple-office-1200.webp 1200w, /hero/temple-office-1920.webp 1920w"
+          srcSet="/hero/family-pic-800.webp 800w, /hero/family-pic-1200.webp 1200w, /hero/family-pic-1920.webp 1920w"
           sizes="100vw"
         />
         <img
           ref={imgRef}
-          src="/hero/temple-office-1920.jpg"
-          alt="Maxwell Financial Group Temple, Texas insurance office"
+          src="/hero/family-pic-1920.jpg"
+          alt="The Maxwell family together"
           fetchPriority="high"
           decoding="async"
           className="absolute inset-0 w-full h-[115%] object-cover object-bottom sm:object-center will-change-transform"

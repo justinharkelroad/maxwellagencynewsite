@@ -13,6 +13,10 @@ const jotFormConfigs: Record<string, { formId: string; height: string }> = {
     formId: "260044904370046",
     height: "539px",
   },
+  "Danielle Kelly": {
+    formId: "262735291633157",
+    height: "539px",
+  },
   "Haley Blackmon": {
     formId: "260155352050142",
     height: "539px",
@@ -23,10 +27,6 @@ const jotFormConfigs: Record<string, { formId: string; height: string }> = {
   },
   "Brandon Foley": {
     formId: "260154407278154",
-    height: "539px",
-  },
-  "Betty Hidalgo": {
-    formId: "260155431466151",
     height: "539px",
   },
   "Natalia Fuentes": {
@@ -45,12 +45,20 @@ const jotFormConfigs: Record<string, { formId: string; height: string }> = {
     formId: "260154433248150",
     height: "539px",
   },
+  "Joseph Downs": {
+    formId: "262734900397160",
+    height: "539px",
+  },
   "Nicole Tafur": {
     formId: "260155669986171",
     height: "539px",
   },
   "Gina Oliva": {
     formId: "260155820379156",
+    height: "539px",
+  },
+  "Gavin Price": {
+    formId: "262735157893166",
     height: "539px",
   },
 };
@@ -64,7 +72,6 @@ const getGoogleReviewUrl = (name: string): string =>
 // Google Review URL for specific staff members
 const googleReviewUrls: Record<string, string> = {
   "Alayna Sudduth": "https://g.page/r/Cc3NV9peP9zEEBM/review",
-  "Betty Hidalgo": "https://g.page/r/CcEdhnl-gcgLEBM/review",
   "Bill Maxwell": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Brandon Foley": "https://g.page/r/Cc3NV9peP9zEEBM/review",
   "Chris Guillen": "https://g.page/r/Cc3NV9peP9zEEBM/review",

@@ -10,11 +10,11 @@ const leadershipTeam = [
   { name: "Chris Guillen", slug: "chris" },
   { name: "Grace Koch", slug: "grace" },
   { name: "Kara Townsend", slug: "kara" },
+  { name: "Jennifer Boggiano", slug: "jennifer" },
 ];
 
 const salesTeam = [
   { name: "Brandon Foley", slug: "brandon" },
-  { name: "Jennifer Boggiano", slug: "jennifer" },
   { name: "Joseph Downs", slug: "joseph" },
   { name: "Natalia Fuentes", slug: "natalia" },
 ];

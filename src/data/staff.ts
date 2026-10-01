@@ -75,6 +75,16 @@ export const staffMembers: StaffMember[] = [
     email: "ChrisGuillen@Allstate.com",
     bio: "Meet Chris Guillen, Director of Sales at Maxwell Financial Group. Chris leads the sales team with a hands-on approach, helping individuals and families find coverage for their auto, home, renters, flood, and specialty insurance needs. He focuses on understanding each client's unique situation and offering clear, practical options that protect what matters most.\n\nAs a leader, Chris is dedicated to mentoring his team, driving growth, and ensuring every customer receives the personalized attention they deserve. His approachable style and commitment to excellence set the tone for the entire sales department.\n\nOutside of work, Chris enjoys spending time with his family, playing golf, and cheering on both the Dallas Cowboys and the Texas Longhorns during football season. Chris' dedication to service and leadership make him a trusted resource for customers and team members across Texas.",
   },
+  {
+    name: "Jennifer Boggiano",
+    slug: "jennifer",
+    title: "Licensed Insurance Agent",
+    location: "Corpus Christi, TX",
+    image: "Jennifer Boggiano.jpg",
+    phone: "361-470-2327",
+    email: "JBoggiano@Allstate.com",
+    bio: "Jennifer Boggiano is an experienced insurance professional with over 20 years in the industry, specializing in auto, homeowners, life, and commercial insurance. She enjoys helping customers feel confident and supported as they choose coverage that fits their lives. Outside of work, Jennifer values time with her family and loves getting lost in a good book. She is bilingual in English and Spanish, allowing her to serve a diverse range of clients.",
+  },
   // Sales Team
   {
     name: "Brandon Foley",
@@ -85,16 +95,6 @@ export const staffMembers: StaffMember[] = [
     phone: "361-356-1063",
     email: "BFoley@Allstate.com",
     bio: "Brandon Foley is a licensed insurance agent with over 10 years of experience helping customers find coverage that fits their needs across auto, home, renters, flood, and specialty policies. He takes pride in offering clear guidance and dependable support, so clients feel confident and protected. Outside of work, Brandon enjoys spending time with his wife Katrina and daughter and unwinding with a round of golf. His steady, thoughtful approach makes him a trusted resource for customers navigating important insurance decisions.",
-  },
-  {
-    name: "Jennifer Boggiano",
-    slug: "jennifer",
-    title: "Licensed Insurance Agent",
-    location: "Corpus Christi, TX",
-    image: "Jennifer Boggiano.jpg",
-    phone: "361-470-2327",
-    email: "JBoggiano@Allstate.com",
-    bio: "Jennifer Boggiano is an experienced insurance professional with over 20 years in the industry, specializing in auto, homeowners, life, and commercial insurance. She enjoys helping customers feel confident and supported as they choose coverage that fits their lives. Outside of work, Jennifer values time with her family and loves getting lost in a good book. She is bilingual in English and Spanish, allowing her to serve a diverse range of clients.",
   },
   {
     name: "Joseph Downs",
