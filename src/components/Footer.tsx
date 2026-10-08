@@ -7,7 +7,7 @@ const locations = [
     name: "Temple, TX",
     streetAddress: "201 Clinite Grove Blvd Ste 110",
     cityLine: "Temple, TX 76502",
-    phone: "(361) 317-7044",
+    phone: "(254) 294-3311",
     hours: "Mon–Fri 9:00 AM – 6:00 PM",
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=201+Clinite+Grove+Blvd+Ste+110%2C+Temple%2C+TX+76502",
