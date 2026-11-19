@@ -235,20 +235,20 @@ const Header = () => {
                 {/* Locations */}
                 <div className="mb-2">
                   <Link
-                    to="/locations/temple"
-                    onClick={() => setIsMenuOpen(false)}
-                    className="flex items-center w-full px-4 py-3 rounded-lg hover:bg-muted transition-colors label-uppercase text-foreground hover:text-primary"
-                  >
-                    Temple, TX Office
-                  </Link>
-                </div>
-                <div className="mb-4">
-                  <Link
                     to="/locations/corpus-christi"
                     onClick={() => setIsMenuOpen(false)}
                     className="flex items-center w-full px-4 py-3 rounded-lg hover:bg-muted transition-colors label-uppercase text-foreground hover:text-primary"
                   >
                     Corpus Christi, TX Office
+                  </Link>
+                </div>
+                <div className="mb-4">
+                  <Link
+                    to="/locations/temple"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="flex items-center w-full px-4 py-3 rounded-lg hover:bg-muted transition-colors label-uppercase text-foreground hover:text-primary"
+                  >
+                    Temple, TX Office
                   </Link>
                 </div>
 
