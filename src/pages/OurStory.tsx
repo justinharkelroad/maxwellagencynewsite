@@ -179,7 +179,7 @@ const OurStory = () => {
                 {
                   icon: MapPin,
                   title: "Same office, same address",
-                  body: "3837 S Padre Island Dr in Corpus Christi. Same phone, (361) 317-7044, that clients have called for years.",
+                  body: "3837 S Padre Island Dr in Corpus Christi. Same phone, (361) 245-3530, that clients have called for years.",
                 },
                 {
                   icon: Users,
@@ -239,11 +239,11 @@ const OurStory = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
               <a
-                href="tel:3613177044"
+                href="tel:3612453530"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md text-lg hover:bg-primary/90 transition-colors w-full sm:w-auto justify-center"
               >
                 <Phone className="w-5 h-5" />
-                (361) 317-7044
+                (361) 245-3530
               </a>
               <Link
                 to="/locations/corpus-christi"

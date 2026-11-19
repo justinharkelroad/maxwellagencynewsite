@@ -195,7 +195,7 @@ const QuoteForm = ({ onSuccess, initialInsuranceType }: QuoteFormProps) => {
     } catch {
       toast({
         title: "Something went wrong",
-        description: "Please try again or call us at (361) 317-7044.",
+        description: "Please try again or call us at (361) 245-3530.",
         variant: "destructive",
       });
     } finally {
@@ -274,7 +274,7 @@ const QuoteForm = ({ onSuccess, initialInsuranceType }: QuoteFormProps) => {
               type="tel"
               value={formData.phone}
               onChange={(e) => updateField("phone", e.target.value)}
-              placeholder="(254) 555-0123"
+              placeholder="(361) 555-0123"
               maxLength={50}
               autoComplete="tel"
               className="bg-popover text-popover-foreground border-border"
@@ -366,8 +366,8 @@ const QuoteForm = ({ onSuccess, initialInsuranceType }: QuoteFormProps) => {
           </p>
           <p className="text-xs text-center text-popover-foreground/60">
             We&rsquo;ll respond within 24 hours. Or call us at{" "}
-            <a href="tel:3613177044" className="text-primary hover:underline">
-              (361) 317-7044
+            <a href="tel:3612453530" className="text-primary hover:underline">
+              (361) 245-3530
             </a>
           </p>
         </>

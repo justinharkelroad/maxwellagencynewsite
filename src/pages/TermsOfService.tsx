@@ -74,8 +74,8 @@ const TermsOfService = () => {
               </p>
               <ul className="list-none pl-0 text-muted-foreground space-y-1 mt-2">
                 <li>Email — <a href="mailto:KristinMaxwell@Allstate.com" className="text-primary hover:underline">KristinMaxwell@Allstate.com</a></li>
-                <li>Temple, TX — <a href="tel:3613177044" className="text-primary hover:underline">361-317-7044</a></li>
-                <li>Corpus Christi, TX — <a href="tel:3613177044" className="text-primary hover:underline">361-317-7044</a></li>
+                <li>Temple, TX — <a href="tel:2543063935" className="text-primary hover:underline">254-306-3935</a></li>
+                <li>Corpus Christi, TX — <a href="tel:3612453530" className="text-primary hover:underline">361-245-3530</a></li>
               </ul>
             </section>
           </div>

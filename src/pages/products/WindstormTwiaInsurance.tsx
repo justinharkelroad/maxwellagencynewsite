@@ -87,9 +87,9 @@ const WindstormTwiaInsurance = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="gap-2" asChild>
-                  <a href="tel:+13613177044">
+                  <a href="tel:+13612453530">
                     <Phone className="w-5 h-5" />
-                    Call (361) 317-7044
+                    Call (361) 245-3530
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" asChild>
@@ -331,11 +331,11 @@ const WindstormTwiaInsurance = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
               <a
-                href="tel:3613177044"
+                href="tel:3612453530"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md text-lg hover:bg-primary/90 transition-colors w-full sm:w-auto justify-center"
               >
                 <Phone className="w-5 h-5" />
-                Call (361) 317-7044
+                Call (361) 245-3530
               </a>
               <Link
                 to="/locations/corpus-christi"

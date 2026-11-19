@@ -35,13 +35,13 @@ const STATIC_ROUTES: Record<string, RouteSeo> = {
   "/": {
     title: "Insurance in Temple & Corpus Christi TX | Maxwell Financial",
     description:
-      "Texas insurance in Temple & Corpus Christi: auto, home, life, business, flood & coastal windstorm (TWIA). Free quote in 60 seconds. Call (361) 317-7044.",
+      "Texas insurance in Temple & Corpus Christi: auto, home, life, business, flood & coastal windstorm (TWIA). Free quote in 60 seconds. Call (361) 245-3530.",
     breadcrumb: "Home",
   },
   "/contact": {
     title: "Contact Maxwell Financial Group | Temple & Corpus Christi",
     description:
-      "Call Maxwell Financial Group at (361) 317-7044 for a Texas insurance quote or coverage question — we reply within 24 hours.",
+      "Call Maxwell Financial Group at (361) 245-3530 for a Texas insurance quote or coverage question — we reply within 24 hours.",
     breadcrumb: "Contact",
   },
   "/our-story": {
@@ -53,13 +53,13 @@ const STATIC_ROUTES: Record<string, RouteSeo> = {
   "/locations/temple": {
     title: "Insurance in Temple, TX | Maxwell Financial Group",
     description:
-      "Insurance agency in Temple, Texas serving Bell County — Belton, Killeen, Harker Heights & Salado. Auto, home, life & business coverage. Call (254) 294-3311.",
+      "Insurance agency in Temple, Texas serving Bell County — Belton, Killeen, Harker Heights & Salado. Auto, home, life & business coverage. Call (254) 306-3935.",
     breadcrumb: "Temple, TX",
   },
   "/locations/corpus-christi": {
     title: "Insurance in Corpus Christi, TX | Maxwell Financial Group",
     description:
-      "Coastal insurance agency in Corpus Christi serving Nueces County — windstorm (TWIA), flood, auto & home. Wind-included policies available. Call (361) 317-7044.",
+      "Coastal insurance agency in Corpus Christi serving Nueces County — windstorm (TWIA), flood, auto & home. Wind-included policies available. Call (361) 245-3530.",
     breadcrumb: "Corpus Christi, TX",
   },
   "/insurance/auto": {

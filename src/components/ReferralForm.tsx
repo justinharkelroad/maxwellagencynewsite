@@ -133,7 +133,7 @@ const ReferralForm = ({ staffName, onSuccess }: ReferralFormProps) => {
     } catch {
       toast({
         title: "Something went wrong",
-        description: "Please try again or call us at (361) 317-7044.",
+        description: "Please try again or call us at (361) 245-3530.",
         variant: "destructive",
       });
     } finally {
@@ -229,7 +229,7 @@ const ReferralForm = ({ staffName, onSuccess }: ReferralFormProps) => {
           type="tel"
           value={data.referee_phone}
           onChange={(e) => update("referee_phone", e.target.value)}
-          placeholder="(254) 555-0123"
+          placeholder="(361) 555-0123"
           maxLength={50}
           className="bg-popover text-popover-foreground border-border"
         />

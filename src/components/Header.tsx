@@ -82,11 +82,11 @@ const Header = () => {
           <div className="flex items-center gap-3">
             {/* Call Now Button */}
             <a
-              href="tel:3613177044"
+              href="tel:3612453530"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-4 py-2 rounded-md text-sm hover:bg-primary/90 transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">(361) 317-7044</span>
+              <span className="hidden sm:inline">(361) 245-3530</span>
               <span className="sm:hidden">Call</span>
             </a>
 

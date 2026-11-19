@@ -87,14 +87,14 @@ const Hero = () => {
 
           {/* Visible hero phone CTA */}
           <a
-            href="tel:3613177044"
+            href="tel:3612453530"
             className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors mb-6 sm:mb-8 animate-fade-in opacity-0 [text-shadow:0_2px_12px_hsl(var(--background)/0.9)]"
             style={{ animationDelay: "0.3s" }}
-            aria-label="Call Maxwell Financial Group at (361) 317-7044"
+            aria-label="Call Maxwell Financial Group at (361) 245-3530"
           >
             <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
             <span className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold">
-              (361) 317-7044
+              (361) 245-3530
             </span>
           </a>
 

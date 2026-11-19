@@ -33,7 +33,7 @@ const TempleLocation = () => {
             url: "https://maxwellinsuranceagency.com/locations/temple",
             branchOf: { "@id": "https://maxwellinsuranceagency.com/#org" },
             parentOrganization: { "@id": "https://maxwellinsuranceagency.com/#org" },
-            telephone: "+1-254-294-3311",
+            telephone: "+1-254-306-3935",
             image: "https://maxwellinsuranceagency.com/og/homepage.jpg",
             address: {
               "@type": "PostalAddress",
@@ -98,11 +98,11 @@ const TempleLocation = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
-                  href="tel:2542943311"
+                  href="tel:2543063935"
                   className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md text-lg hover:bg-primary/90 transition-colors w-full sm:w-auto justify-center"
                 >
                   <Phone className="w-5 h-5" />
-                  (254) 294-3311
+                  (254) 306-3935
                 </a>
                 <button
                   onClick={() => setIsModalOpen(true)}
@@ -138,10 +138,10 @@ const TempleLocation = () => {
                   <div className="flex items-center gap-3">
                     <Phone className="w-5 h-5 text-primary shrink-0" />
                     <a
-                      href="tel:2542943311"
+                      href="tel:2543063935"
                       className="text-foreground hover:text-primary transition-colors"
                     >
-                      (254) 294-3311
+                      (254) 306-3935
                     </a>
                   </div>
 
@@ -250,11 +250,11 @@ const TempleLocation = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
               <a
-                href="tel:2542943311"
+                href="tel:2543063935"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md text-lg hover:bg-primary/90 transition-colors w-full sm:w-auto justify-center"
               >
                 <Phone className="w-5 h-5" />
-                Call (254) 294-3311
+                Call (254) 306-3935
               </a>
               <button
                 onClick={() => setIsModalOpen(true)}

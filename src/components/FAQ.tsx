@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: "How do I file a claim?",
-    a: "Call us at (361) 317-7044. We will walk you through the claim process step by step.",
+    a: "Call us at (361) 245-3530. We will walk you through the claim process step by step.",
   },
 ];
 
@@ -90,10 +90,10 @@ const FAQ = () => {
         <p className="text-center text-sm text-charcoal/70 mt-10">
           Don&rsquo;t see your question? Call us at{" "}
           <a
-            href="tel:3613177044"
+            href="tel:3612453530"
             className="text-primary font-semibold hover:underline"
           >
-            (361) 317-7044
+            (361) 245-3530
           </a>
           .
         </p>
